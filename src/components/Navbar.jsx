@@ -9,7 +9,7 @@ export default function Navbar() {
         </ul>
         <ul className={style.rightNav}>
             <li><Link to="/shop">Shop</Link></li>
-            <li><Link to="/cart">Cart</Link></li>
+            <li><Link to="/basket">Basket</Link></li>
         </ul>
     </nav>
   );

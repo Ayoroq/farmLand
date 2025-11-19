@@ -1,5 +1,5 @@
 import App from "../App";
-import Cart from "../pages/Cart/Cart.jsx";
+import Basket from "../pages/Basket/Basket.jsx";
 import Home from "../pages/Home/Home.jsx";
 import Shop from "../pages/Shop/Shop.jsx";
 
@@ -13,8 +13,8 @@ const routes = [
         element: <Home />,
       },
       {
-        path: "cart",
-        element: <Cart />,
+        path: "basket",
+        element: <Basket />,
       },
       {
         path: "shop",
