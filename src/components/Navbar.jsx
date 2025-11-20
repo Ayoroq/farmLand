@@ -31,9 +31,17 @@ export default function Navbar() {
             <span className={style.span}></span>
             <span className={style.span}></span>
           </button>
-          <li className={style.logo}>
-            <Link to="/">FarmLand</Link>
-          </li>
+          <Link to="/" className={style.logo}>
+            FarmLand
+          </Link>
+          <button className={style.mobilebasketBtn}>
+            <Link to="/basket">
+              <img
+                src="/src/assets/NavbarAssets/Shopping Basket Icon.svg"
+                alt="shopping basket"
+              />
+            </Link>
+          </button>
         </ul>
       </nav>
     );
@@ -41,8 +49,10 @@ export default function Navbar() {
   return (
     <nav className={style.navbar}>
       <ul className={style.leftNav}>
-        <li className={style.logo}>
-          <Link to="/">FarmLand</Link>
+        <li className={style.navItem}>
+          <Link to="/" className={style.logo}>
+            FarmLand
+          </Link>
         </li>
       </ul>
       <ul className={style.rightNav}>
