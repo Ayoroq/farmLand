@@ -31,11 +31,6 @@ export default function Navbar() {
             <span className={style.span}></span>
             <span className={style.span}></span>
           </button>
-          <button className={style.menubtn}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
           <li className={style.logo}>
             <Link to="/">FarmLand</Link>
           </li>

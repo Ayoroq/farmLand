@@ -67,7 +67,7 @@ a{
     align-items: center;
     gap: 5px;
     width: 30px;
-    height: 20px;
+    height: 30px;
     background: none;
     border: none;
     cursor: pointer;
@@ -80,8 +80,16 @@ a{
     height: 4px;
     background-color: black;
     border-radius: 2px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-.menubtn:active .span:nth-child(2){
-    display: none;
+.open .span:nth-child(1){
+    transform: translate3d(0,9px,0)  rotate(45deg);
+}
+.open .span:nth-child(2){
+    opacity: 0;
+    transform: scaleX(0);
+}
+.open .span:nth-child(3){
+    transform: translate3d(0,-9px,0) rotate(-45deg);
 }
