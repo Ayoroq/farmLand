@@ -2,6 +2,8 @@ import App from "../App";
 import Basket from "../pages/Basket/Basket.jsx";
 import Home from "../pages/Home/Home.jsx";
 import Shop from "../pages/Shop/Shop.jsx";
+import About from "../pages/About/About.jsx";
+import Contact from "../pages/Contact/Contact.jsx";
 
 const routes = [
   {
@@ -20,6 +22,14 @@ const routes = [
         path: "shop",
         element: <Shop />,
       },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      }
     ],
   },
 ];

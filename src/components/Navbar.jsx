@@ -13,6 +13,12 @@ export default function Navbar() {
         <li className={style.navItem}>
           <Link to="/shop">Shop</Link>
         </li>
+        <li className={style.navItem}>
+          <Link to="/about">Who we are</Link>
+        </li>
+        <li className={style.navItem}>
+          <Link to="/contact">Find Us</Link>
+        </li>
         <li className={`${style.basketBtnContainer} ${style.navItem}`}>
           <button className={style.basketBtn}>
             <Link to="/basket">Basket</Link>
