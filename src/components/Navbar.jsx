@@ -25,18 +25,20 @@ export default function Navbar() {
   if (screenWidth < 530) {
     return (
       <nav className={style.navbar}>
-        <ul className={style.nav}>
-          <button className={style.menubtn} onClick={toggleMenu}>
+        <ul className={style.navbarMobile}>
+          <button type="button" onClick={toggleMenu} className={style.menubtn}>
             <span className={style.span}></span>
             <span className={style.span}></span>
             <span className={style.span}></span>
           </button>
-          <Link to="/" className={style.logo}>
-            FarmLand
-          </Link>
-          <button className={style.mobilebasketBtn}>
+          <li className={style.navItem}>
+            <Link to="/" className={style.logo}>
+              FarmLand
+            </Link>
+          </li>
+          <button className={style.basketBtnMobile}>
             <Link to="/basket">
-              <img
+              <img className={style.basketIconMobile}
                 src="/src/assets/NavbarAssets/Shopping Basket Icon.svg"
                 alt="shopping basket"
               />
