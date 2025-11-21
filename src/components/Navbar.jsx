@@ -9,9 +9,33 @@ export default function Navbar() {
   const sideBarRef = useRef(null);
   const menuBtnRef = useRef(null);
 
+  // Initialize screen width after component mounts
   useEffect(() => {
-    // Set initial screen width after component mounts
     setScreenWidth(window.innerWidth);
+  }, []);
+
+  // Handle window resize events
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+      setScreenWidth(newWidth);
+
+      // Close sidebar when screen becomes larger than 720px
+      if (newWidth >= 720 && isMenuOpen) {
+        setIsMenuOpen(false);
+        if (sideBarRef.current) {
+          sideBarRef.current.classList.remove(style.open);
+        }
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMenuOpen]);
+
+  // Handle click outside sidebar to close it
+  useEffect(() => {
+    if (!isMenuOpen) return;
 
     const handleClickOutside = (event) => {
       if (!sideBarRef.current) return;
@@ -25,26 +49,8 @@ export default function Navbar() {
       }
     };
 
-    const handleResize = () => {
-      const newWidth = window.innerWidth;
-      setScreenWidth(newWidth);
-
-      // Close sidebar when screen becomes larger than 720px
-      if (newWidth >= 720 && isMenuOpen) {
-        setIsMenuOpen(false);
-        if (sideBarRef.current) {
-          sideBarRef.current.classList.remove(style.open);
-        }
-      }
-    };
-    if (isMenuOpen) {
-      document.addEventListener("click", handleClickOutside);
-    }
-    window.addEventListener("resize", handleResize);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-      window.removeEventListener("resize", handleResize);
-    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [isMenuOpen]);
 
   const toggleMenu = () => {
