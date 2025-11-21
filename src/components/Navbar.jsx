@@ -22,7 +22,7 @@ export default function Navbar() {
     }
   };
 
-  if (screenWidth < 530) {
+  if (screenWidth < 620) {
     return (
       <nav className={style.navbar}>
         <ul className={style.navbarMobile}>
