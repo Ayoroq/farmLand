@@ -53,6 +53,11 @@ export default function Navbar() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isMenuOpen]);
 
+  // Prevent body scroll when sidebar is open
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  }, [isMenuOpen]);
+
   const toggleMenu = () => {
     if (!sideBarRef.current) return;
     const newMenuState = !isMenuOpen;
