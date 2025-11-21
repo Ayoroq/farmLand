@@ -29,16 +29,14 @@ export default function Navbar() {
   if (screenWidth < 620) {
     return (
       <>
-        <nav className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ''}`}>
+        <nav className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ""}`}>
           <ul className={style.navbarMobile}>
             <button
               type="button"
               onClick={toggleMenu}
               className={style.menubtn}
             >
-              <span className={style.span}></span>
-              <span className={style.span}></span>
-              <span className={style.span}></span>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L4 7" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path> <path d="M20 12L4 12" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path> <path d="M20 17L4 17" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path> </g></svg>
             </button>
             <li className={style.navItem}>
               <Link to="/" className={style.logo}>
@@ -56,9 +54,7 @@ export default function Navbar() {
             </button>
           </ul>
         </nav>
-        <section className={style.sideBar}>
-
-        </section>
+        <section className={style.sideBar}></section>
       </>
     );
   }
