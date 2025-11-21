@@ -36,7 +36,7 @@ export default function Navbar() {
               onClick={toggleMenu}
               className={style.menubtn}
             >
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L4 7" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path> <path d="M20 12L4 12" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path> <path d="M20 17L4 17" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path> </g></svg>
+              <svg className={style.menuIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L4 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> <path d="M20 12L4 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> <path d="M20 17L4 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> </g></svg>
             </button>
             <li className={style.navItem}>
               <Link to="/" className={style.logo}>
