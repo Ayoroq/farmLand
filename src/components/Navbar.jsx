@@ -11,16 +11,16 @@ export default function Navbar() {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!sideBarRef.current) return;
-      
+
       const clickedInsideSidebar = sideBarRef.current.contains(event.target);
       const clickedInsideMenuBtn = menuBtnRef.current?.contains(event.target);
-      
+
       if (!clickedInsideSidebar && !clickedInsideMenuBtn) {
         setIsMenuOpen(false);
         sideBarRef.current.classList.remove(style.open);
       }
     };
-    
+
     const handleResize = () => {
       const newWidth = window.innerWidth;
       setScreenWidth(newWidth);
@@ -117,7 +117,50 @@ export default function Navbar() {
             </button>
           </ul>
         </nav>
-        <section className={style.sideBar} ref={sideBarRef}></section>
+        <section className={style.sideBar} ref={sideBarRef}>
+          <header className={style.sideBarHeader}>
+            <button
+              type="button"
+              onClick={toggleMenu}
+              className={style.menubtn}
+            >
+              <svg
+                className={style.closeIcon}
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 6L6 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M6 6L18 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </header>
+          <main className={style.sideBarMain}>
+            <ul className={style.sideBarNav}>
+              <li className={style.navItem} onClick={toggleMenu}>
+                <Link to="/shop">Shop</Link>
+              </li>
+              <li className={style.navItem} onClick={toggleMenu}>
+                <Link to="/about">Who we are</Link>
+              </li>
+              <li className={style.navItem} onClick={toggleMenu}>
+                <Link to="/contact">Find Us</Link>
+              </li>
+            </ul>
+          </main>
+        </section>
       </>
     );
   }
@@ -148,7 +191,46 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-      <section className={style.sideBar} ref={sideBarRef}></section>
+      <section className={style.sideBar} ref={sideBarRef}>
+        <header className={style.sideBarHeader}>
+          <button type="button" onClick={toggleMenu} className={style.menubtn}>
+            <svg
+              className={style.closeIcon}
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 6L6 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6 6L18 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </header>
+        <main className={style.sideBarMain}>
+          <ul className={style.sideBarNav}>
+            <li className={style.navItem} onClick={toggleMenu}>
+              <Link to="/shop">Shop</Link>
+            </li>
+            <li className={style.navItem} onClick={toggleMenu}>
+              <Link to="/about">Who we are</Link>
+            </li>
+            <li className={style.navItem} onClick={toggleMenu}>
+              <Link to="/contact">Find Us</Link>
+            </li>
+          </ul>
+        </main>
+      </section>
     </>
   );
 }
