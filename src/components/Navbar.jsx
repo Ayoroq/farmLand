@@ -5,20 +5,24 @@ import style from "./Navbar.module.css";
 export default function Navbar() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const sideBar = document.querySelector(`.${style.sideBar}`);
 
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   const toggleMenu = () => {
     const newMenuState = !isMenuOpen;
     setIsMenuOpen(newMenuState);
     const menu = document.querySelector(`.${style.menubtn}`);
     if (newMenuState) {
       menu.classList.add(style.open);
+      sideBar.classList.add(style.open);
     } else {
       menu.classList.remove(style.open);
+      sideBar.classList.remove(style.open);
     }
   };
 
@@ -53,7 +57,7 @@ export default function Navbar() {
           </ul>
         </nav>
         <section className={style.sideBar}>
-          
+
         </section>
       </>
     );
