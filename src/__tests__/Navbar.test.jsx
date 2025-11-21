@@ -2,6 +2,7 @@ import {describe, it, expect} from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router';
 import Navbar from '../components/Navbar.jsx';
+import Sidebar from '../components/Sidebar.jsx';
 
 describe('Navbar Component', () => {
   it('renders the Navbar with the correct title', () => {
@@ -70,5 +71,31 @@ describe('Navbar Mobile Component', () => {
     );
     const menuButton = screen.getByRole('button', { name: /Open navigation menu/i });
     expect(menuButton).toBeInTheDocument();
+  });
+});
+
+
+describe('Sidebar Component', () => {
+  it('renders the Sidebar with the correct links', () => {
+    render(
+      <BrowserRouter>
+        <Sidebar />
+      </BrowserRouter>
+    );
+    const shopLinks = screen.getAllByText(/Shop/i);
+    const aboutLinks = screen.getAllByText(/Who we are/i);
+    const contactLinks = screen.getAllByText(/Find Us/i);
+    expect(shopLinks[0]).toBeInTheDocument();
+    expect(aboutLinks[0]).toBeInTheDocument();
+    expect(contactLinks[0]).toBeInTheDocument();
+  });
+  it('renders the close button in Sidebar', () => {
+    render(
+      <BrowserRouter>
+        <Sidebar />
+      </BrowserRouter>
+    );
+    const closeButton = screen.getByRole('button', { name: /Close navigation menu/i });
+    expect(closeButton).toBeInTheDocument();
   });
 });
