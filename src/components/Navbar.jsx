@@ -5,7 +5,6 @@ import style from "./Navbar.module.css";
 export default function Navbar() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const sideBar = document.querySelector(`.${style.sideBar}`);
 
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
@@ -14,14 +13,12 @@ export default function Navbar() {
   }, []);
 
   const toggleMenu = () => {
+    const sideBar = document.querySelector(`.${style.sideBar}`);
     const newMenuState = !isMenuOpen;
     setIsMenuOpen(newMenuState);
-    const menu = document.querySelector(`.${style.menubtn}`);
     if (newMenuState) {
-      menu.classList.add(style.open);
       sideBar.classList.add(style.open);
     } else {
-      menu.classList.remove(style.open);
       sideBar.classList.remove(style.open);
     }
   };
