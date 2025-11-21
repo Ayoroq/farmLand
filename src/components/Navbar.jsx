@@ -25,7 +25,7 @@ export default function Navbar() {
   if (screenWidth < 620) {
     return (
       <>
-        <nav className={style.navbar}>
+        <nav className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ''}`}>
           <ul className={style.navbarMobile}>
             <button
               type="button"
