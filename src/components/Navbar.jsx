@@ -24,28 +24,38 @@ export default function Navbar() {
 
   if (screenWidth < 620) {
     return (
-      <nav className={style.navbar}>
-        <ul className={style.navbarMobile}>
-          <button type="button" onClick={toggleMenu} className={style.menubtn}>
-            <span className={style.span}></span>
-            <span className={style.span}></span>
-            <span className={style.span}></span>
-          </button>
-          <li className={style.navItem}>
-            <Link to="/" className={style.logo}>
-              FarmLand
-            </Link>
-          </li>
-          <button className={style.basketBtnMobile}>
-            <Link to="/basket">
-              <img className={style.basketIconMobile}
-                src="/src/assets/NavbarAssets/Shopping Basket Icon.svg"
-                alt="shopping basket"
-              />
-            </Link>
-          </button>
-        </ul>
-      </nav>
+      <>
+        <nav className={style.navbar}>
+          <ul className={style.navbarMobile}>
+            <button
+              type="button"
+              onClick={toggleMenu}
+              className={style.menubtn}
+            >
+              <span className={style.span}></span>
+              <span className={style.span}></span>
+              <span className={style.span}></span>
+            </button>
+            <li className={style.navItem}>
+              <Link to="/" className={style.logo}>
+                FarmLand
+              </Link>
+            </li>
+            <button className={style.basketBtnMobile}>
+              <Link to="/basket">
+                <img
+                  className={style.basketIconMobile}
+                  src="/src/assets/NavbarAssets/Shopping Basket Icon.svg"
+                  alt="shopping basket"
+                />
+              </Link>
+            </button>
+          </ul>
+        </nav>
+        <section className={style.sideBar}>
+          
+        </section>
+      </>
     );
   }
   return (
