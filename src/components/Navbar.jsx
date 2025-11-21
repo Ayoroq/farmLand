@@ -1,16 +1,30 @@
 import { Link } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import style from "./Navbar.module.css";
 
 export default function Navbar() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const sideBarRef = useRef(null);
+  const menuBtnRef = useRef(null);
 
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!sideBarRef.current) return;
+      
+      const clickedInsideSidebar = sideBarRef.current.contains(event.target);
+      const clickedInsideMenuBtn = menuBtnRef.current?.contains(event.target);
+      
+      if (!clickedInsideSidebar && !clickedInsideMenuBtn) {
+        setIsMenuOpen(false);
+        sideBarRef.current.classList.remove(style.open);
+      }
+    };
+    
     const handleResize = () => {
       const newWidth = window.innerWidth;
       setScreenWidth(newWidth);
-      
+
       // Close sidebar when screen becomes larger than 620px
       if (newWidth >= 720 && isMenuOpen) {
         const sideBar = document.querySelector(`.${style.sideBar}`);
@@ -20,18 +34,24 @@ export default function Navbar() {
         }
       }
     };
+    if (isMenuOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [isMenuOpen]);
 
   const toggleMenu = () => {
-    const sideBar = document.querySelector(`.${style.sideBar}`);
+    if (!sideBarRef.current) return;
     const newMenuState = !isMenuOpen;
     setIsMenuOpen(newMenuState);
     if (newMenuState) {
-      sideBar.classList.add(style.open);
+      sideBarRef.current.classList.add(style.open);
     } else {
-      sideBar.classList.remove(style.open);
+      sideBarRef.current.classList.remove(style.open);
     }
   };
 
@@ -44,8 +64,42 @@ export default function Navbar() {
               type="button"
               onClick={toggleMenu}
               className={style.menubtn}
+              ref={menuBtnRef}
             >
-              <svg className={style.menuIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L4 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> <path d="M20 12L4 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> <path d="M20 17L4 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> </g></svg>
+              <svg
+                className={style.menuIcon}
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <path
+                    d="M20 7L4 7"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  ></path>{" "}
+                  <path
+                    d="M20 12L4 12"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  ></path>{" "}
+                  <path
+                    d="M20 17L4 17"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  ></path>{" "}
+                </g>
+              </svg>
             </button>
             <li className={style.navItem}>
               <Link to="/" className={style.logo}>
@@ -63,7 +117,7 @@ export default function Navbar() {
             </button>
           </ul>
         </nav>
-        <section className={style.sideBar}></section>
+        <section className={style.sideBar} ref={sideBarRef}></section>
       </>
     );
   }
@@ -94,7 +148,7 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-      <section className={style.sideBar}></section>
+      <section className={style.sideBar} ref={sideBarRef}></section>
     </>
   );
 }
