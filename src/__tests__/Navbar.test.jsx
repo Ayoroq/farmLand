@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router';
 import Navbar from '../components/Navbar.jsx';
 import Sidebar from '../components/Sidebar.jsx';
+import userEvent from '@testing-library/user-event';
+import sidebarStyles from '../components/Navbar.module.css';
 
 describe('Navbar Component', () => {
   it('renders the Navbar with the correct title', () => {
@@ -97,5 +99,43 @@ describe('Sidebar Component', () => {
     );
     const closeButton = screen.getByRole('button', { name: /Close navigation menu/i });
     expect(closeButton).toBeInTheDocument();
+  });
+});
+
+describe('Navbar and Sidebar Integration', () => {
+  it('shows the Sidebar when the menu button is clicked', async () => {
+    render(
+      <BrowserRouter>
+        <Navbar />
+      </BrowserRouter>
+    );
+    const user = userEvent.setup();
+    const menuButton = screen.getByRole('button', { name: /Open navigation menu/i });
+    
+    // Sidebar should be hidden initially
+    const sidebar = screen.getByRole('navigation', { name: /sidebar/i });
+    expect(sidebar).not.toHaveClass(sidebarStyles.open);
+    
+    // Click menu button to open sidebar
+    await user.click(menuButton);
+    expect(sidebar).toHaveClass(sidebarStyles.open);
+  });
+    it('hides the Sidebar when the close button is clicked', async () => {
+    render(
+      <BrowserRouter>
+        <Navbar />
+        </BrowserRouter>
+    );
+    const user = userEvent.setup();
+    const menuButton = screen.getByRole('button', { name: /Open navigation menu/i });
+    // Open the sidebar first
+    await user.click(menuButton);
+    const sidebar = screen.getByRole('navigation', { name: /sidebar/i });
+    expect(sidebar).toHaveClass(sidebarStyles.open);
+    
+    // Click close button to close sidebar
+    const closeButton = screen.getByRole('button', { name: /Close navigation menu/i });
+    await user.click(closeButton);
+    expect(sidebar).not.toHaveClass(sidebarStyles.open);
   });
 });

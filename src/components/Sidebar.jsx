@@ -4,7 +4,7 @@ import style from "./Navbar.module.css";
 
 const Sidebar = forwardRef(({ toggleMenu }, ref) => {
   return (
-    <section className={style.sideBar} ref={ref}>
+    <section className={style.sideBar} ref={ref} role="navigation" aria-label="Sidebar Navigation Menu">
       <header className={style.sideBarHeader}>
         <button 
           type="button" 
