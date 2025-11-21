@@ -3,12 +3,15 @@ import { useState, useEffect, useRef } from "react";
 import style from "./Navbar.module.css";
 
 export default function Navbar() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const sideBarRef = useRef(null);
   const menuBtnRef = useRef(null);
 
   useEffect(() => {
+    // Set initial screen width after component mounts
+    setScreenWidth(window.innerWidth);
+
     const handleClickOutside = (event) => {
       if (!sideBarRef.current) return;
 
@@ -25,12 +28,11 @@ export default function Navbar() {
       const newWidth = window.innerWidth;
       setScreenWidth(newWidth);
 
-      // Close sidebar when screen becomes larger than 620px
+      // Close sidebar when screen becomes larger than 720px
       if (newWidth >= 720 && isMenuOpen) {
-        const sideBar = document.querySelector(`.${style.sideBar}`);
         setIsMenuOpen(false);
-        if (sideBar) {
-          sideBar.classList.remove(style.open);
+        if (sideBarRef.current) {
+          sideBarRef.current.classList.remove(style.open);
         }
       }
     };
@@ -65,6 +67,8 @@ export default function Navbar() {
               onClick={toggleMenu}
               className={style.menubtn}
               ref={menuBtnRef}
+              aria-label="Open navigation menu"
+              aria-expanded={isMenuOpen}
             >
               <svg
                 className={style.menuIcon}
@@ -106,15 +110,13 @@ export default function Navbar() {
                 FarmLand
               </Link>
             </li>
-            <button className={style.basketBtnMobile}>
-              <Link to="/basket">
-                <img
-                  className={style.basketIconMobile}
-                  src="/src/assets/NavbarAssets/Shopping Basket Icon.svg"
-                  alt="shopping basket"
-                />
-              </Link>
-            </button>
+            <Link to="/basket" className={style.basketBtnMobile}>
+              <img
+                className={style.basketIconMobile}
+                src="/src/assets/NavbarAssets/Shopping Basket Icon.svg"
+                alt="shopping basket"
+              />
+            </Link>
           </ul>
         </nav>
         <section className={style.sideBar} ref={sideBarRef}>
@@ -123,6 +125,7 @@ export default function Navbar() {
               type="button"
               onClick={toggleMenu}
               className={style.menubtn}
+              aria-label="Close navigation menu"
             >
               <svg
                 className={style.closeIcon}
@@ -185,15 +188,13 @@ export default function Navbar() {
             <Link to="/contact">Find Us</Link>
           </li>
           <li className={`${style.basketBtnContainer} ${style.navItem}`}>
-            <button className={style.basketBtn}>
-              <Link to="/basket">Basket</Link>
-            </button>
+            <Link to="/basket" className={style.basketBtn}>Basket</Link>
           </li>
         </ul>
       </nav>
       <section className={style.sideBar} ref={sideBarRef}>
         <header className={style.sideBarHeader}>
-          <button type="button" onClick={toggleMenu} className={style.menubtn}>
+          <button type="button" onClick={toggleMenu} className={style.menubtn} aria-label="Close navigation menu">
             <svg
               className={style.closeIcon}
               viewBox="0 0 24 24"
