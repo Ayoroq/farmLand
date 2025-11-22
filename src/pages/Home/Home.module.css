@@ -1,4 +1,29 @@
-.main{
-    height: 200vh;
-    background: linear-gradient( #A8E063, #56AB2F);
+.main {
+  height: 100vh;
+  overflow: hidden;
+  /* background: linear-gradient(#a8e063, #56ab2f); */
 }
+.title {
+  text-align: center;
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  animation: 3s ease show;
+}
+
+.italic{
+    font-style: italic;
+}
+
+@keyframes show {
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
