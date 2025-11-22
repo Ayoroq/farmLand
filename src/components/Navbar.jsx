@@ -72,7 +72,7 @@ export default function Navbar() {
   if (screenWidth < 620) {
     return (
       <>
-        <nav className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ""}`}>
+        <nav className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ""}`} role="nav">
           <ul className={style.navbarMobile}>
             <button
               type="button"
@@ -137,7 +137,7 @@ export default function Navbar() {
   }
   return (
     <>
-      <nav className={style.navbar}>
+      <nav className={style.navbar} role="nav">
         <ul className={style.leftNav}>
           <li className={style.navItem}>
             <Link to="/" className={style.logo}>
