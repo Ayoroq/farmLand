@@ -76,3 +76,15 @@
   display: flex;
   gap: 2rem;
 }
+
+.info h4{
+  white-space: nowrap;
+  font-size: clamp(1rem, 2.3vw, 4rem);
+  height: fit-content;
+}
+
+@media (width < 620px) {
+  .info{
+    flex-direction: column;
+  }
+}
