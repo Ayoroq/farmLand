@@ -1,5 +1,4 @@
 .main {
-  min-height: 100vh;
   overflow-y: auto; /* Allows vertical scrolling if content overflows */
   /* background: linear-gradient(#a8e063, #56ab2f); */
 }
@@ -14,18 +13,11 @@
   padding: 2rem 1rem;
   line-height: 1.05;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
-  animation: show 1.2s ease forwards;
+  animation: show 2s ease forwards;
 }
 
 .italic {
   font-style: italic;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .title {
-    animation: none;
-    transition: none;
-  }
 }
 
 @keyframes show {
@@ -33,12 +25,29 @@
     opacity: 0;
     transform: translateY(0);
   }
-  50% {
+  10% {
     opacity: 0;
     transform: translateY(40px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Sections */
+/* Section - 1 */
+
+.section1 {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  animation: show 2s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title {
+    animation: none;
+    transition: none;
   }
 }
