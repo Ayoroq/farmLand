@@ -74,6 +74,7 @@ a:hover:not(.logo):not(.basketBtn) {
 }
 
 .logo {
+  color: var(--primary-color);
   font-family: var(--font-family);
   font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: 800;
