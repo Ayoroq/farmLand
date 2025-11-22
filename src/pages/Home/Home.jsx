@@ -3,37 +3,49 @@ import { Link } from "react-router";
 import vegImage from "../../assets/HomeAssets/vegetables.png";
 import multiVegImage from "../../assets/HomeAssets/multiple-veg.png";
 import ArialViewVideo from "../../assets/HomeAssets/Aerial View of Farmland.mp4";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const section2ref = useRef(null);
+
   return (
     <div className={styles.home}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          We’re <em>farmers</em>,<em> purveyors</em>, and <em>eaters</em>{" "}
-          <br></br>of organically grown food.
-        </h1>
-        <Link className={styles.shopButton} to="/shop">
-          Browse Our Shop
-        </Link>
-      </main>
-      <section className={`${styles.section} ${styles.section1}`}>
-        <figure>
-          <img src={vegImage} alt="Fresh organic green vegetables" />
-          <figcaption>Fresh organic vegetables grown locally.</figcaption>
-        </figure>
+      <div className={styles.page1}>
+        <main className={styles.main}>
+          <h1 className={styles.title}>
+            We’re <em>farmers</em>,<em> purveyors</em>, and <em>eaters</em>{" "}
+            <br></br>of organically grown food.
+          </h1>
+          <Link className={styles.shopButton} to="/shop">
+            Browse Our Shop
+          </Link>
+        </main>
+        <section className={`${styles.section} ${styles.section1}`}>
+          <figure>
+            <img src={vegImage} alt="Fresh organic green vegetables" />
+            <figcaption>Fresh organic vegetables grown locally.</figcaption>
+          </figure>
 
-        <figure>
-          <img src={multiVegImage} alt="A variety of organic produce" />
-          <figcaption>
-            A colorful variety of organic produce from our farms.
-            <br />
-            <b>Central California</b> — The person who grew these was located in
-            Central California and, er, hopefully very well-compensated.
-          </figcaption>
-        </figure>
-      </section>
+          <figure>
+            <img src={multiVegImage} alt="A variety of organic produce" />
+            <figcaption>
+              A colorful variety of organic produce from our farms.
+              <br />
+              <b>Central California</b> — The person who grew these was located
+              in Central California and, er, hopefully very well-compensated.
+            </figcaption>
+          </figure>
+        </section>
+      </div>
       <section className={`${styles.section} ${styles.section2}`}>
         <video
+          ref={section2ref}
           src={ArialViewVideo}
           autoPlay
           muted
