@@ -1,10 +1,11 @@
-import style from "./Home.module.css";
+import styles from "./Home.module.css";
 
 export default function Home() {
-  return (<>
-    <main className={style.main}>
-      <h1 className={style.title}>We’re <span className={style.italic}>farmers</span>, <span className={style.italic}>purveyors</span>, and <span className={style.italic}>eaters</span> of <br/>organically grown food.</h1>
+  return (
+    <main className={styles.main}>
+      <h1 className={styles.title}>
+        We’re <em className={styles.italic}>farmers</em>, <em className={styles.italic}>purveyors</em>, and <em className={styles.italic}>eaters</em> of organically grown food.
+      </h1>
     </main>
-    </>
   );
 }

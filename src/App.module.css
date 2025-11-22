@@ -8,12 +8,3 @@
   min-height: 100vh;
   height: 100%;
 }
-
-/* Hide scrollbar globally */
-html {
-  overflow: hidden;
-}
-
-body {
-  overflow: hidden;
-}
