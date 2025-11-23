@@ -1,9 +1,9 @@
 import { Link } from "react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, forwardRef } from "react";
 import style from "./Navbar.module.css";
 import Sidebar from "./Sidebar.jsx";
 
-export default function Navbar() {
+const Navbar = forwardRef((props, ref) => {
   const [screenWidth, setScreenWidth] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const sideBarRef = useRef(null);
@@ -68,11 +68,15 @@ export default function Navbar() {
       sideBarRef.current.classList.remove(style.open);
     }
   };
-
-  if (screenWidth < 620) {
-    return (
-      <>
-        <nav className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ""}`} role="nav">
+  return (
+    <>
+      <nav
+        className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ""}`}
+        role="nav"
+        ref={ref}
+      >
+        {screenWidth < 620 ? (
+          // Mobile layout
           <ul className={style.navbarMobile}>
             <button
               type="button"
@@ -130,37 +134,40 @@ export default function Navbar() {
               />
             </Link>
           </ul>
-        </nav>
-        <Sidebar ref={sideBarRef} toggleMenu={toggleMenu} />
-      </>
-    );
-  }
-  return (
-    <>
-      <nav className={style.navbar} role="nav">
-        <ul className={style.leftNav}>
-          <li className={style.navItem}>
-            <Link to="/" className={style.logo}>
-              FarmLand
-            </Link>
-          </li>
-        </ul>
-        <ul className={style.rightNav}>
-          <li className={style.navItem}>
-            <Link to="/shop">Shop</Link>
-          </li>
-          <li className={style.navItem}>
-            <Link to="/about">Who we are</Link>
-          </li>
-          <li className={style.navItem}>
-            <Link to="/contact">Find Us</Link>
-          </li>
-          <li className={`${style.basketBtnContainer} ${style.navItem}`}>
-            <Link to="/basket" className={style.basketBtn}>Basket</Link>
-          </li>
-        </ul>
+        ) : (
+          // Desktop layout
+          <>
+            <ul className={style.leftNav}>
+              <li className={style.navItem}>
+                <Link to="/" className={style.logo}>
+                  FarmLand
+                </Link>
+              </li>
+            </ul>
+            <ul className={style.rightNav}>
+              <li className={style.navItem}>
+                <Link to="/shop">Shop</Link>
+              </li>
+              <li className={style.navItem}>
+                <Link to="/about">Who we are</Link>
+              </li>
+              <li className={style.navItem}>
+                <Link to="/contact">Find Us</Link>
+              </li>
+              <li className={`${style.basketBtnContainer} ${style.navItem}`}>
+                <Link to="/basket" className={style.basketBtn}>
+                  Basket
+                </Link>
+              </li>
+            </ul>
+          </>
+        )}
       </nav>
       <Sidebar ref={sideBarRef} toggleMenu={toggleMenu} />
     </>
   );
-}
+});
+
+Navbar.displayName = "Navbar";
+
+export default Navbar;
