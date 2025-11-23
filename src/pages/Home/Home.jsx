@@ -14,7 +14,7 @@ export default function Home(){
   const containerRef = useRef([])
 
   useGSAP(() => {
-    const navBar = document.querySelector(".navbar")
+    const NavbarHeigh
     containerRef.current.forEach((container) => {
       ScrollTrigger.create({
         trigger: container,

@@ -74,6 +74,7 @@ const Navbar = forwardRef((props, ref) => {
         className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ""}`}
         role="nav"
         ref={ref}
+        id='nav'
       >
         {screenWidth < 620 ? (
           // Mobile layout
