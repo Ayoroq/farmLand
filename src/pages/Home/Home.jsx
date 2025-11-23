@@ -16,12 +16,12 @@ export default function Home() {
 
   useGSAP(() => {
     const Navbar = document.querySelector("#nav");
-    const NavbarHeight = Navbar.offsetHeight;
+    const NavbarHeight = Navbar ? Navbar.offsetHeight : 0;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: homeRef.current,
-        start: `top ${NavbarHeight}px`,
-        end: '+=' + ((sectionRef.current.length - 1) * 100) + "%",
+        start: `top ${NavbarHeight + 10}px`,
+        end: "+=" + (sectionRef.current.length - 1) * 100 + "%",
         scrub: true,
         pin: true,
         pinSpacing: true,
@@ -33,7 +33,7 @@ export default function Home() {
       tl.from(section, {
         xPercent: 100,
         opacity: 0,
-        duration: 2,
+        duration: 1,
         ease: "none",
       });
     });
@@ -49,7 +49,31 @@ export default function Home() {
           }
         }}
       >
-        <p>Testing again</p>
+        <main className={styles.main}>
+          <h1 className={styles.title}>
+            We’re <em>farmers</em>,<em> purveyors</em>, and <em>eaters</em>
+            <br></br>of organically grown food.
+          </h1>
+          <Link className={styles.shopButton} to="/shop">
+            Browse Our Shop
+          </Link>
+        </main>
+        <section className={styles.part}>
+          <figure>
+            <img src={vegImage} alt="Fresh organic green vegetables" />
+            <figcaption>Fresh organic vegetables grown locally.</figcaption>
+          </figure>
+
+          <figure>
+            <img src={multiVegImage} alt="A variety of organic produce" />
+            <figcaption>
+              A colorful variety of organic produce from our farms.
+              <br />
+              <b>Central California</b> — The person who grew these was located
+              in Central California and, er, hopefully very well-compensated.
+            </figcaption>
+          </figure>
+        </section>
       </section>
       <section
         className={`${styles.section} ${styles.blue}`}
