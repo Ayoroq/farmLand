@@ -14,11 +14,12 @@ export default function Home(){
   const containerRef = useRef([])
 
   useGSAP(() => {
-    const NavbarHeigh
+    const Navbar = document.querySelector("#nav")
+    const NavbarHeight = Navbar.offsetHeight
     containerRef.current.forEach((container) => {
       ScrollTrigger.create({
         trigger: container,
-        start: "top top",
+        start: `top ${NavbarHeight}`,
         pin: true,
         pinSpacing: false,
         markers: true
