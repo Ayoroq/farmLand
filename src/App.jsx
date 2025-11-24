@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router'
 import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 import style from "./App.module.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -25,6 +26,7 @@ export default function App() {
       <div className={style.app}>
         <Navbar />
         <Outlet />
+        <Footer />
       </div>
     </ReactLenis>
   )
