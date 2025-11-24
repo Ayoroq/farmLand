@@ -14,9 +14,38 @@ export default function Home() {
   const sectionRef = useRef([]);
   const homeRef = useRef(null);
 
-  return{
-    
-  }
+  return(
+    <div className={styles.home}>
+      <section className={`${styles.hero} ${styles.section}`}>
+        <main className={styles.main}>
+          <h1 className={styles.title}>
+            We’re <em>farmers</em>,<em> purveyors</em>, and <em>eaters</em>
+            <br></br>of organically grown food.
+          </h1>
+          <Link className={styles.shopButton} to="/shop">
+            Browse Our Shop
+          </Link>
+        </main>
+        <section className={styles.subSection}>
+          <figure>
+            <img src={vegImage} alt="Fresh organic green vegetables" />
+            <figcaption>Fresh organic vegetables grown locally.</figcaption>
+          </figure>
+
+          <figure>
+            <img src={multiVegImage} alt="A variety of organic produce" />
+            <figcaption>
+              A colorful variety of organic produce from our farms.
+              <br />
+              <b>Central California</b> — The person who grew these was located
+              in Central California.
+            </figcaption>
+          </figure>
+        </section>
+      </section>
+      <section className={`${styles.second} ${styles.section}`}></section>
+    </div>
+  )
 }
   // useGSAP(() => {
   //   const Navbar = document.querySelector("#nav");
