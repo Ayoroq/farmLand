@@ -92,8 +92,9 @@ input::placeholder {
   width: 100%;
 }
 
-.footerContainer2Links a {
+.footerContainer2Links a, .footerContainer2Links1 a {
   display: flex;
+  align-items: center;
   gap: 5px;
 }
 
