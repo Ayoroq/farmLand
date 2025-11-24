@@ -72,7 +72,7 @@ const Navbar = forwardRef((props, ref) => {
     <>
       <nav
         className={`${style.navbar} ${isMenuOpen ? style.menuOpen : ""}`}
-        role="nav"
+        role="navigation"
         ref={ref}
         id='nav'
       >

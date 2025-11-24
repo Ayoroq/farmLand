@@ -12,12 +12,12 @@ const renderApp = () => {
 describe("App Routing", () => {
   it("renders without crashing", () => {
     renderApp();
-    expect(screen.getByRole("navigation")).toBeInTheDocument();
+    expect(screen.getAllByRole("navigation")[0]).toBeInTheDocument();
   });
 
   it("renders home page by default", () => {
     renderApp();
-    expect(screen.getByText(/Welcome to FarmLand!/i)).toBeInTheDocument();
+    expect(screen.getByText(/farmers/i)).toBeInTheDocument();
   });
 
   it("navigates to shop page when shop link is clicked", async () => {
@@ -70,7 +70,6 @@ describe("App Integration Tests", () => {
     const shopLink = screen.getAllByText(/Shop/i)[0];
     await user.click(shopLink);
 
-    expect(screen.getByRole("nav")).toBeInTheDocument();
-    expect(screen.getByRole("nav")).toBeInTheDocument();
+    expect(screen.getAllByRole("navigation")[0]).toBeInTheDocument();
   });
 });

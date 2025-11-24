@@ -24,3 +24,17 @@ Object.defineProperty(window, 'innerWidth', {
 afterEach(() => {
   cleanup();
 });
+
+// Mock matchMedia for GSAP ScrollTrigger
+if (!window.matchMedia) {
+  window.matchMedia = function () {
+    return {
+      matches: false,
+      media: "",
+      onchange: null,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    };
+  };
+}
