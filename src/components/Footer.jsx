@@ -67,37 +67,16 @@ export default function Footer() {
           </Link>
           <Link target="_blank" rel="noopener noreferrer">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              id="X-Twitter-Logo--Streamline-Logos"
-              height="20"
               width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <desc>
-                X Twitter Logo Streamline Icon: https://streamlinehq.com
-              </desc>
               <path
-                stroke="currentcolor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17.2705 22.464 1.5 1.53589h5.22951L22.5 22.464h-5.2295Z"
-                stroke-width="1"
-              ></path>
-              <path
-                stroke="currentcolor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m21.7578 1.53589 -8.313 8.91461"
-                stroke-width="1"
-              ></path>
-              <path
-                stroke="currentcolor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m2.24207 22.464 8.30673 -8.9078"
-                stroke-width="1"
-              ></path>
+                d="M17.5798 17.3332L11.7164 8.78517L11.7264 8.79317L17.0131 2.6665H15.2464L10.9398 7.65317L7.51976 2.6665H2.88643L8.36043 10.6472L8.35976 10.6465L2.58643 17.3332H4.35309L9.14109 11.7852L12.9464 17.3332H17.5798ZM6.81976 3.99984L15.0464 15.9998H13.6464L5.41309 3.99984H6.81976Z"
+                fill="currentcolor"
+              />
             </svg>
             TWITTER
           </Link>
