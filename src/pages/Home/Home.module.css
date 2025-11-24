@@ -47,6 +47,7 @@
 
 /* Second page */
 .secondPage{
+  flex: 0.7;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -54,17 +55,26 @@
 }
 
 .info {
+  flex: 0.3;
   display: flex;
   gap: 2rem;
 }
 
-.info h4 {
+.info h2 {
   white-space: nowrap;
   font-size: clamp(1rem, 2.3vw, 4rem);
   height: fit-content;
 }
 
 
+/* footer */
+.footer{
+  background-color: #426B1F;
+}
+
+.footer *{
+  color: white;
+}
 
 @keyframes show {
   0% {

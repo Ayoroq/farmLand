@@ -54,7 +54,7 @@ export default function Home() {
           ></video>
 
           <div className={styles.info}>
-            <h4>WHAT WE BELIEVE</h4>
+            <h2>WHAT WE BELIEVE</h2>
             <p>
               We believe in produce. Tasty produce. Produce like:
               <br />
@@ -82,6 +82,34 @@ export default function Home() {
           </div>
         </section>
       </section>
+      <footer className={styles.footer}>
+        <div className={styles.footerContainer1}>
+          <div className={styles.footerContainer1a}>
+            <Link to="/shop">Shop</Link>
+            <Link to="/about">Who we are</Link>
+            <Link to="/#">Journal</Link>
+            <Link to="/contact">Find Us</Link>
+          </div>
+          <div className={styles.footerContainer1a}>
+            <Link to="/#">FAQ</Link>
+            <Link to="/#">Recipes</Link>
+            <Link to="/#">Event</Link>
+            <Link to="/#">Connect</Link>
+          </div>
+        </div>
+        <div className={styles.footerContainer2}>
+          <div className={styles.newsletter}>
+            <h3>
+              Sign up for our newsletter to get updates on our work and special announcements.
+            </h3>
+            <p>
+              <label htmlFor=""></label>
+              <input type="email" />
+              <button>JOIN LIST</button>
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
