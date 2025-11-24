@@ -100,7 +100,7 @@ export default function Home() {
         <div className={styles.footerContainer2}>
           <div className={styles.newsletter}>
             <h3>
-              Sign up for our newsletter to get updates on our work and special announcements.
+              Get updates on our work & <br/> special announcements.
             </h3>
             <p>
               <label htmlFor=""></label>
