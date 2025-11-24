@@ -2,3 +2,38 @@
   flex: 1;
   padding: 0 2rem;
 }
+
+
+.shopHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(213, 211, 211);
+}
+
+.headerleft{
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.headerleft h1{
+    font-family: Newsreader;
+    font-weight: normal;
+}
+
+.headerleft p{
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: rgb(75, 75, 75);
+}
+
+.filterDropdown{
+    padding: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    background: none;
+    cursor: pointer;
+    gap: 0.5rem;
+}
