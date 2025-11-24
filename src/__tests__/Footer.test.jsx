@@ -28,3 +28,46 @@ describe("Footer Component", () => {
     expect(connectLinks[0]).toBeInTheDocument();
   });
 });
+
+describe("Footer Component", () => {
+  it("has the correct href attributes for links", () => {
+    render(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    );
+    const shopLink = screen.getByText(/Shop/i).closest('a');
+    const aboutLink = screen.getByText(/Who we are/i).closest('a');
+    const contactLink = screen.getByText(/Find Us/i).closest('a');
+    
+    expect(shopLink).toHaveAttribute('href', '/shop');
+    expect(aboutLink).toHaveAttribute('href', '/about');
+    expect(contactLink).toHaveAttribute('href', '/contact');
+  });
+})
+
+describe('footer component', () => {
+  it('The footer is actually prese', () => {
+    render(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    );
+
+    const footer = screen.getByRole('footer');
+    expect(footer).toHaveClass(FooterStyles.footer);
+  });
+})
+
+describe('Email inout', () => {
+  it('The email input is actually present', () => {
+    render(
+      <BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    );
+
+    const emailInput = screen.getByPlaceholderText('EMAIL ADDRESS');
+    expect(emailInput).toBeInTheDocument();
+  });
+})
