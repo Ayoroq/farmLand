@@ -81,6 +81,10 @@
   color: white;
 }
 
+.footer a{
+  font-size: 0.8rem;
+}
+
 .footerContainer1{
   flex: 0.6;
   display: flex;
@@ -91,6 +95,42 @@
 .footerContainer1a{
   display: flex;
   flex-direction: column;
+}
+
+.newsletter{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.newsletter h3{
+  font-weight: normal;
+  font-size: clamp(1.5rem,1.8rem,2rem);
+}
+
+.newsletter *{
+  background: none;
+  border: none;
+}
+
+.newsletterEmail{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+}
+input{
+  outline: none;
+}
+input::placeholder {
+  color: rgb(180, 180, 180);
+}
+
+.newsletterButton{
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-family: gt;
+  padding: 0;
 }
 
 @keyframes show {
@@ -118,5 +158,8 @@
 @media (width < 620px) {
   .info {
     flex-direction: column;
+  }
+  .footer{
+    flex-direction: column-reverse;
   }
 }

@@ -85,27 +85,47 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.footerContainer1}>
           <div className={styles.footerContainer1a}>
-            <Link to="/shop">Shop</Link>
-            <Link to="/about">Who we are</Link>
-            <Link to="/#">Journal</Link>
-            <Link to="/contact">Find Us</Link>
+            <Link to="/shop">SHOP</Link>
+            <Link to="/about">WHO WE ARE</Link>
+            <Link to="/#">JOURNAL</Link>
+            <Link to="/contact">FIND US</Link>
           </div>
           <div className={styles.footerContainer1a}>
             <Link to="/#">FAQ</Link>
-            <Link to="/#">Recipes</Link>
-            <Link to="/#">Event</Link>
-            <Link to="/#">Connect</Link>
+            <Link to="/#">RECIPES</Link>
+            <Link to="/#">EVENT</Link>
+            <Link to="/#">CONNECT</Link>
           </div>
         </div>
         <div className={styles.footerContainer2}>
           <div className={styles.newsletter}>
             <h3>
-              Get updates on our work & <br/> special announcements.
+              Get updates & special <br /> announcements.
             </h3>
-            <p>
-              <label htmlFor=""></label>
-              <input type="email" />
-              <button>JOIN LIST</button>
+            <p className={styles.newsletterEmail}>
+              <label>
+                <input type="email" placeholder="EMAIL ADDRESS" />
+              </label>
+              <button className={styles.newsletterButton}>
+                JOIN LIST{" "}
+                <span>
+                  <svg
+                    width="25"
+                    height="30"
+                    viewBox="0 0 420 420"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Material Symbols Trending Flat Icon 1">
+                      <path
+                        id="Vector"
+                        d="M307.125 288.313L288.312 269.938L334.688 223.563H52.5V197.313H335.125L288.75 150.938L307.125 132.562L385 210.438L307.125 288.313Z"
+                        fill="yellow"
+                      />
+                    </g>
+                  </svg>
+                </span>
+              </button>
             </p>
           </div>
         </div>
