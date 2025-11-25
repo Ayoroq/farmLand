@@ -1,6 +1,7 @@
 .shop {
   flex: 1;
-  padding: 0 2rem;
+  padding: 2rem;
+  padding-top: 0;
 }
 
 

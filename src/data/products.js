@@ -6,7 +6,7 @@ export const products = [
     slug: "tomatoes",
     price: 4.99,
     category: "vegetables",
-    image: "/images/tomatoes.jpg",
+    image: "./images/tomatoes.jpg",
     description: "Fresh organic tomatoes grown locally",
     inStock: true,
     unit: "kg",

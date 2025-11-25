@@ -1,4 +1,7 @@
 import styles from "./Shop.module.css";
+import { useState } from "react";
+import ShopCard from "../../components/Card";
+import { products } from "../../data/products";
 
 export default function Shop() {
   const today = new Date();
@@ -22,77 +25,109 @@ export default function Shop() {
             <svg
               width="20"
               height="20"
-              viewBox="0 0 89 89"
+              viewBox="0 0 19 17"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M16.4321 26.0627H27.8482"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
-              <path
-                d="M48.2085 26.0627H72.5678"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
-              <path
-                d="M38.0068 32.3337C41.4701 32.3337 44.2777 29.5262 44.2777 26.0628C44.2777 22.5995 41.4701 19.7919 38.0068 19.7919C34.5434 19.7919 31.7358 22.5995 31.7358 26.0628C31.7358 29.5262 34.5434 32.3337 38.0068 32.3337Z"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
-              <path
-                d="M72.5679 44.4164H61.1519"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
-              <path
-                d="M40.7914 44.4164H16.4321"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
-              <path
-                d="M50.9936 50.6873C54.4569 50.6873 57.2645 47.8797 57.2645 44.4163C57.2645 40.953 54.4569 38.1454 50.9936 38.1454C47.5303 38.1454 44.7227 40.953 44.7227 44.4163C44.7227 47.8797 47.5303 50.6873 50.9936 50.6873Z"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
-              <path
-                d="M72.568 62.9373H53.1357"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
-              <path
-                d="M32.7752 62.9373H16.4321"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
-              <path
-                d="M42.977 69.2081C46.4403 69.2081 49.2479 66.4005 49.2479 62.9372C49.2479 59.4739 46.4403 56.6663 42.977 56.6663C39.5137 56.6663 36.7061 59.4739 36.7061 62.9372C36.7061 66.4005 39.5137 69.2081 42.977 69.2081Z"
-                stroke="currentcolor"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-              />
+              <g id="Group 4">
+                <g id="Group 3">
+                  <circle
+                    id="Ellipse 282"
+                    cx="5.5"
+                    cy="14.5"
+                    r="2"
+                    stroke="currentcolor"
+                  />
+                  <line
+                    id="Line 9"
+                    x1="3.5"
+                    y1="14.5"
+                    x2="0.5"
+                    y2="14.5"
+                    stroke="currentcolor"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    id="Line 8"
+                    x1="7.5"
+                    y1="14.5"
+                    x2="18.5"
+                    y2="14.5"
+                    stroke="currentcolor"
+                    strokeLinecap="round"
+                  />
+                </g>
+                <g id="Group 1">
+                  <circle
+                    id="Ellipse 279"
+                    cx="5.5"
+                    cy="2.5"
+                    r="2"
+                    stroke="currentcolor"
+                  />
+                  <line
+                    id="Line 4"
+                    x1="7.5"
+                    y1="2.5"
+                    x2="18.5"
+                    y2="2.5"
+                    stroke="currentcolor"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    id="Line 5"
+                    x1="3.5"
+                    y1="2.5"
+                    x2="0.5"
+                    y2="2.5"
+                    stroke="currentcolor"
+                    strokeLinecap="round"
+                  />
+                </g>
+                <g id="Group 2">
+                  <circle
+                    id="Ellipse 280"
+                    cx="13.5"
+                    cy="8.5"
+                    r="2"
+                    stroke="currentcolor"
+                  />
+                  <line
+                    id="Line 6"
+                    x1="0.5"
+                    y1="8.5"
+                    x2="11.5"
+                    y2="8.5"
+                    stroke="currentcolor"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    id="Line 7"
+                    x1="18.5"
+                    y1="8.5"
+                    x2="15.5"
+                    y2="8.5"
+                    stroke="currentcolor"
+                    strokeLinecap="round"
+                  />
+                </g>
+              </g>
             </svg>
           </button>
         </div>
       </header>
+      <section className={styles.shopSection}>
+        {products.map((product) => (
+          <ShopCard
+            key={product.id}
+            name={product.name}
+            price={product.price}
+            img={product.image}
+            description={product.description}
+            unit={product.unit}
+          />
+        ))}
+      </section>
     </main>
   );
 }
