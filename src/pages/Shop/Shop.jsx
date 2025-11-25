@@ -114,6 +114,66 @@ export default function Shop() {
               </g>
             </svg>
           </button>
+          <div>
+            <div className={styles.sort}>
+              <h3>Sort By</h3>
+              <div className={styles.sortDropdown}>
+                <button className={styles.sortDropdownButton}>
+                  Price
+                  <svg
+                    width="15"
+                    height="21"
+                    viewBox="0 0 15 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      id="Arrow 1"
+                      d="M6.36377 20C6.36377 20.5523 6.81148 21 7.36377 21C7.91605 21 8.36377 20.5523 8.36377 20H7.36377H6.36377ZM8.07088 0.292893C7.68035 -0.0976311 7.04719 -0.0976311 6.65666 0.292893L0.292702 6.65685C-0.0978226 7.04738 -0.0978226 7.68054 0.292702 8.07107C0.683226 8.46159 1.31639 8.46159 1.70692 8.07107L7.36377 2.41421L13.0206 8.07107C13.4111 8.46159 14.0443 8.46159 14.4348 8.07107C14.8254 7.68054 14.8254 7.04738 14.4348 6.65685L8.07088 0.292893ZM7.36377 20H8.36377L8.36377 1H7.36377H6.36377L6.36377 20H7.36377Z"
+                      fill="black"
+                    />
+                  </svg>
+                </button>
+                <button className={styles.sortDropdownButton}>
+                  Price
+                  <svg
+                    width="15"
+                    height="21"
+                    viewBox="0 0 15 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      id="Arrow 1"
+                      d="M8.36377 1C8.36377 0.447715 7.91605 0 7.36377 0C6.81148 0 6.36377 0.447715 6.36377 1H7.36377L8.36377 1ZM6.65666 20.7071C7.04719 21.0976 7.68035 21.0976 8.07088 20.7071L14.4348 14.3431C14.8254 13.9526 14.8254 13.3195 14.4348 12.9289C14.0443 12.5384 13.4111 12.5384 13.0206 12.9289L7.36377 18.5858L1.70692 12.9289C1.31639 12.5384 0.683226 12.5384 0.292702 12.9289C-0.0978226 13.3195 -0.0978226 13.9526 0.292702 14.3431L6.65666 20.7071ZM7.36377 1H6.36377L6.36377 20H7.36377H8.36377L8.36377 1L7.36377 1Z"
+                      fill="black"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div className={styles.filter}>
+              <h3>Filter By</h3>
+              <div className={styles.filterDropdown}>
+                <div className={styles.filterOption}>
+                  <h4>Category</h4>
+                  <div className={styles.filterOptionButtons}>
+                    <button className={styles.filterOptionButton}>All</button>
+                    <button className={styles.filterOptionButton}>Fruits</button>
+                    <button className={styles.filterOptionButton}>
+                      Vegetables
+                    </button>
+                    <button className={styles.filterOptionButton}>Organic</button>
+                  </div>
+                </div>
+                <div className={styles.filterOption}>
+                  <h4>Price</h4>
+                  <input type="range" min="0" max="20" defaultValue="10" id="priceSlider" />
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </header>
       <section className={styles.shopSection}>
