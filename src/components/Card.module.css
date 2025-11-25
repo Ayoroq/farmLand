@@ -1,16 +1,21 @@
 .ShopCard{
     display: flex;
     flex-direction: column;
-    border: 1px solid;
+    border: 2px solid white;
     border-radius: 5px;
-    max-width: fit-content;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.ShopCardImgContainer{
+    flex: 1;
 }
 
 .ShopCardImg{
     width: 100%;
     display: block;
-    object-fit: contain;
-    max-width: 300px;
+    object-fit: cover;
+    height: 100%;
 }
 
 .ShopCardDetailsContainer{
