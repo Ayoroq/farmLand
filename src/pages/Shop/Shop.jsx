@@ -4,37 +4,46 @@ import ShopCard from "../../components/Card";
 import { products } from "../../data/products";
 
 export default function Shop() {
-  const [filterAndSortDropdownIsActive, setfilterAndSortDropdownIsActive] = useState(false)
-  const filterAndSort = useRef(null)
-  const dropDown = useRef(null)
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filterAndSortDropdownIsActive, setfilterAndSortDropdownIsActive] =
+    useState(false);
+  const filterAndSort = useRef(null);
+  const dropDown = useRef(null);
 
-  function hideAndShowDropdown(){
-    setfilterAndSortDropdownIsActive(!filterAndSortDropdownIsActive)
+  function hideAndShowDropdown() {
+    setfilterAndSortDropdownIsActive(!filterAndSortDropdownIsActive);
   }
 
   // function to hide dropdown when clicked on the outside
   useEffect(() => {
-  function handleClick(e) {
-    if (
-      dropDown.current &&
-      filterAndSort.current &&
-      !dropDown.current.contains(e.target) &&
-      !filterAndSort.current.contains(e.target)
-    ) {
-      setfilterAndSortDropdownIsActive(false);
+    function handleClick(e) {
+      if (
+        dropDown.current &&
+        filterAndSort.current &&
+        !dropDown.current.contains(e.target) &&
+        !filterAndSort.current.contains(e.target)
+      ) {
+        setfilterAndSortDropdownIsActive(false);
+      }
     }
-  }
 
-  window.addEventListener("click", handleClick);
-  return () => window.removeEventListener("click", handleClick);
-}, []);
-  
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
+  }, []);
+
   const today = new Date();
   const formattedDate = today.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+
+  function sortByPriceAsc(){
+    setFilteredProducts([...filteredProducts].sort((a, b) => a.price - b.price));
+  }
+  function sortByPriceDesc(){
+    setFilteredProducts([...filteredProducts].sort((a, b) => b.price - a.price));
+  }
   return (
     <main className={styles.shop}>
       <header className={styles.shopHeader}>
@@ -143,11 +152,16 @@ export default function Shop() {
               </g>
             </svg>
           </button>
-          <div className={`${styles.filterAndSort} ${filterAndSortDropdownIsActive ? styles.showDropdown : ''}`} ref={dropDown}>
+          <div
+            className={`${styles.filterAndSort} ${
+              filterAndSortDropdownIsActive ? styles.showDropdown : ""
+            }`}
+            ref={dropDown}
+          >
             <div className={styles.sort}>
               <h3>Sort By</h3>
               <div className={styles.sortDropdown}>
-                <button className={styles.sortDropdownButton}>
+                <button className={styles.sortDropdownButton} onClick={sortByPriceAsc}>
                   Price
                   <svg
                     width="15"
@@ -163,7 +177,7 @@ export default function Shop() {
                     />
                   </svg>
                 </button>
-                <button className={styles.sortDropdownButton}>
+                <button className={styles.sortDropdownButton} onClick={sortByPriceDesc}>
                   Price
                   <svg
                     width="15"
@@ -208,7 +222,7 @@ export default function Shop() {
         </div>
       </header>
       <section className={styles.shopSection}>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ShopCard
             key={product.id}
             name={product.name}
