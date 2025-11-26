@@ -164,11 +164,11 @@
     color: white;
 }
 .filterActive:hover{
-    color: black;
+    background-color: #f4abab;
 }
 
 .sortControlsButton:hover, .filterControlButton:hover{
-    background-color: red;
+    background-color: #f4abab;
     color: white;
 }
 
