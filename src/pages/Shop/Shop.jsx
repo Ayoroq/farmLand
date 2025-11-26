@@ -10,6 +10,9 @@ export default function Shop() {
   const [Sorted, setSorted] = useState(null);
   const filterAndSort = useRef(null);
   const dropDown = useRef(null);
+  const controls = useRef(null);
+  const sortControl = useRef(null);
+  const filterControlContainer = useRef(null);
 
   function hideAndShowDropdown() {
     setfilterAndSortDropdownIsActive(!filterAndSortDropdownIsActive);
@@ -44,12 +47,16 @@ export default function Shop() {
       [...filteredProducts].sort((a, b) => a.price - b.price)
     );
     setSorted("ASC");
+    controls.current.style.display = "flex";
+    sortControl.current.innerText = "Price ASC";
   }
   function sortByPriceDesc() {
     setFilteredProducts(
       [...filteredProducts].sort((a, b) => b.price - a.price)
     );
     setSorted("DESC");
+    controls.current.style.display = "flex";
+    sortControl.current.innerText = "Price DESC";
   }
 
   // Function to apply filters to the items
@@ -65,7 +72,6 @@ export default function Shop() {
     setFilteredProducts(filtered);
   }
 
-  
   function filterByFruits() {
     applyFilters("fruits");
   }
@@ -241,13 +247,22 @@ export default function Shop() {
                 <div className={styles.filterOption}>
                   <h4>Category</h4>
                   <div className={styles.filterOptionButtons}>
-                    <button className={styles.filterOptionButton} onClick={filterByFruits}>
+                    <button
+                      className={styles.filterOptionButton}
+                      onClick={filterByFruits}
+                    >
                       Fruits
                     </button>
-                    <button className={styles.filterOptionButton} onClick={filterByVegetables}>
+                    <button
+                      className={styles.filterOptionButton}
+                      onClick={filterByVegetables}
+                    >
                       Vegetables
                     </button>
-                    <button className={styles.filterOptionButton} onClick={filterByOrganics}>
+                    <button
+                      className={styles.filterOptionButton}
+                      onClick={filterByOrganics}
+                    >
                       Organic
                     </button>
                   </div>
@@ -260,6 +275,14 @@ export default function Shop() {
           </div>
         </div>
       </header>
+      <section className={styles.filterAndSortControls} ref={controls}>
+        <p className={styles.sortControls} ref={sortControl}>
+        </p>
+        <div
+          className={styles.filterControlsContainer}
+          ref={filterControlContainer}
+        ></div>
+      </section>
       <section className={styles.shopSection}>
         {filteredProducts.map((product) => (
           <ShopCard

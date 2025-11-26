@@ -136,6 +136,10 @@
   padding: 1rem;
   max-height: 600px;
 }
+/* controls */
+.filterAndSortControls{
+    display: none;
+}
 
 @media (max-width: 620px){
     .filterSortDropdownText{
