@@ -11,9 +11,6 @@ export default function Shop() {
   const [Sorted, setSorted] = useState(null);
   const filterAndSort = useRef(null);
   const dropDown = useRef(null);
-  const controls = useRef(null);
-  const sortControl = useRef(null);
-  const filterControlContainer = useRef(null);
 
   function hideAndShowDropdown() {
     setfilterAndSortDropdownIsActive(!filterAndSortDropdownIsActive);
@@ -48,27 +45,21 @@ export default function Shop() {
       [...filteredProducts].sort((a, b) => a.price - b.price)
     );
     setSorted("ASC");
-    controls.current.style.display = "flex";
-    sortControl.current.innerText = "Price ASC";
   }
   function sortByPriceDesc() {
     setFilteredProducts(
       [...filteredProducts].sort((a, b) => b.price - a.price)
     );
     setSorted("DESC");
-    controls.current.style.display = "flex";
-    sortControl.current.innerText = "Price DESC";
   }
 
   // Function to apply filters to the items
-  function applyFilters(filter) {
-    if (!filters.includes(filter)) {
+  function toggleFilter(filter) {
+    if (filters.includes(filter)) {
+      setFilters(filters.filter((f) => f !== filter));
+    } else {
       setFilters([...filters, filter]);
     }
-  }
-
-  function removeFilters(filter) {
-    filters.includes(filter) && setFilters(filters.filter((f) => f !== filter));
   }
 
   useEffect(() => {
@@ -86,25 +77,6 @@ export default function Shop() {
 
     setFilteredProducts(result);
   }, [filters, Sorted]);
-
-  function filterByFruits() {
-    applyFilters("fruits");
-  }
-  function filterByVegetables() {
-    applyFilters("vegetables");
-  }
-  function filterByOrganics() {
-    applyFilters("organic");
-  }
-  function removeFilterByFruits() {
-    removeFilters("fruits");
-  }
-  function removeFilterByVegetables() {
-    removeFilters("vegetables");
-  }
-  function removeFilterByOrganics() {
-    removeFilters("organic");
-  }
 
   return (
     <main className={styles.shop}>
@@ -271,39 +243,35 @@ export default function Shop() {
                   <div className={styles.filterOptionButtons}>
                     <button
                       className={styles.filterOptionButton}
-                      onClick={filterByFruits}
+                      onClick={() => toggleFilter("fruits")}
                     >
                       Fruits
                     </button>
                     <button
                       className={styles.filterOptionButton}
-                      onClick={filterByVegetables}
+                      onClick={() => toggleFilter("vegetables")}
                     >
                       Vegetables
                     </button>
                     <button
                       className={styles.filterOptionButton}
-                      onClick={filterByOrganics}
+                      onClick={() => toggleFilter("organic")}
                     >
                       Organic
                     </button>
                   </div>
-                </div>
-                <div className={styles.filterOption}>
-                  <h4>Price</h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </header>
-      <section className={styles.filterAndSortControls} ref={controls}>
-        <p className={styles.sortControls} ref={sortControl}></p>
-        <div
-          className={styles.filterControlsContainer}
-          ref={filterControlContainer}
-        ></div>
-      </section>
+      {Sorted && (
+        <section className={styles.filterAndSortControls}>
+          <p className={styles.sortControls}>Price {Sorted}</p>
+          <div className={styles.filterControlsContainer}></div>
+        </section>
+      )}
       <section className={styles.shopSection}>
         {filteredProducts.map((product) => (
           <ShopCard
