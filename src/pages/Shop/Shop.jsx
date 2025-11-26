@@ -1,9 +1,17 @@
 import styles from "./Shop.module.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ShopCard from "../../components/Card";
 import { products } from "../../data/products";
 
 export default function Shop() {
+
+  const filterAndSort = useRef('null')
+  const dropDown = useRef('null')
+
+  function hideAndShowDropdown(){
+    dropDown.current.classList.toggle(styles.showDropdown)
+  }
+  
   const today = new Date();
   const formattedDate = today.toLocaleDateString("en-US", {
     year: "numeric",
@@ -19,9 +27,13 @@ export default function Shop() {
             Fresh — <span>{formattedDate}</span>
           </p>
         </div>
-        <div className={styles.headerright}>
-          <button className={styles.filterDropdown}>
-            Filter & Sort{" "}
+        <div className={styles.headerRight}>
+          <button
+            className={styles.filterDropdown}
+            ref={filterAndSort}
+            onClick={hideAndShowDropdown}
+          >
+            Filter & Sort
             <svg
               width="20"
               height="20"
@@ -114,7 +126,7 @@ export default function Shop() {
               </g>
             </svg>
           </button>
-          <div>
+          <div className={styles.filterAndSort} ref={dropDown}>
             <div className={styles.sort}>
               <h3>Sort By</h3>
               <div className={styles.sortDropdown}>
@@ -122,7 +134,7 @@ export default function Shop() {
                   Price
                   <svg
                     width="15"
-                    height="21"
+                    height="15"
                     viewBox="0 0 15 21"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +150,7 @@ export default function Shop() {
                   Price
                   <svg
                     width="15"
-                    height="21"
+                    height="15"
                     viewBox="0 0 15 21"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -154,23 +166,25 @@ export default function Shop() {
             </div>
             <div className={styles.filter}>
               <h3>Filter By</h3>
-              <div className={styles.filterDropdown}>
+              <div className={styles.filterByDropdown}>
                 <div className={styles.filterOption}>
                   <h4>Category</h4>
                   <div className={styles.filterOptionButtons}>
                     <button className={styles.filterOptionButton}>All</button>
-                    <button className={styles.filterOptionButton}>Fruits</button>
+                    <button className={styles.filterOptionButton}>
+                      Fruits
+                    </button>
                     <button className={styles.filterOptionButton}>
                       Vegetables
                     </button>
-                    <button className={styles.filterOptionButton}>Organic</button>
+                    <button className={styles.filterOptionButton}>
+                      Organic
+                    </button>
                   </div>
                 </div>
                 <div className={styles.filterOption}>
                   <h4>Price</h4>
-                  <input type="range" min="0" max="20" defaultValue="10" id="priceSlider" />
                 </div>
-
               </div>
             </div>
           </div>
