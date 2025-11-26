@@ -266,10 +266,87 @@ export default function Shop() {
           </div>
         </div>
       </header>
-      {Sorted && (
+      {(Sorted || filters.length > 0) && (
         <section className={styles.filterAndSortControls}>
-          <p className={styles.sortControls}>Price {Sorted}</p>
-          <div className={styles.filterControlsContainer}></div>
+          {Sorted && (
+            <div className={styles.sortControls}>
+              <p>Sorted by Price: {Sorted}</p>
+              <button
+                className={styles.sortControlsButton}
+                onClick={() => setSorted(null)}
+              >
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="Group 5">
+                    <line
+                      id="Line 10"
+                      x1="0.5"
+                      y1="8.58782"
+                      x2="8.58782"
+                      y2="0.5"
+                      stroke="black"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      id="Line 11"
+                      x1="1.20711"
+                      y1="0.5"
+                      x2="9.29492"
+                      y2="8.58782"
+                      stroke="black"
+                      strokeLinecap="round"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          )}
+          {filters.length > 0 && (
+            <div className={styles.filterControls}>
+              {filters.map((filter) => (
+                <button
+                  key={filter}
+                  className={styles.filterControlButton}
+                  onClick={() => toggleFilter(filter)}
+                >
+                  {filter}
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Group 5">
+                      <line
+                        id="Line 10"
+                        x1="0.5"
+                        y1="8.58782"
+                        x2="8.58782"
+                        y2="0.5"
+                        stroke="black"
+                        strokeLinecap="round"
+                      />
+                      <line
+                        id="Line 11"
+                        x1="1.20711"
+                        y1="0.5"
+                        x2="9.29492"
+                        y2="8.58782"
+                        stroke="black"
+                        strokeLinecap="round"
+                      />
+                    </g>
+                  </svg>
+                </button>
+              ))}
+            </div>
+          )}
         </section>
       )}
       <section className={styles.shopSection}>
