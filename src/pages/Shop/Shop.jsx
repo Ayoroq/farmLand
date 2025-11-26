@@ -1,16 +1,33 @@
 import styles from "./Shop.module.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ShopCard from "../../components/Card";
 import { products } from "../../data/products";
 
 export default function Shop() {
-
-  const filterAndSort = useRef('null')
-  const dropDown = useRef('null')
+  const [filterAndSortDropdownIsActive, setfilterAndSortDropdownIsActive] = useState(false)
+  const filterAndSort = useRef(null)
+  const dropDown = useRef(null)
 
   function hideAndShowDropdown(){
-    dropDown.current.classList.toggle(styles.showDropdown)
+    setfilterAndSortDropdownIsActive(!filterAndSortDropdownIsActive)
   }
+
+  // function to hide dropdown when clicked on the outside
+  useEffect(() => {
+  function handleClick(e) {
+    if (
+      dropDown.current &&
+      filterAndSort.current &&
+      !dropDown.current.contains(e.target) &&
+      !filterAndSort.current.contains(e.target)
+    ) {
+      setfilterAndSortDropdownIsActive(false);
+    }
+  }
+
+  window.addEventListener("click", handleClick);
+  return () => window.removeEventListener("click", handleClick);
+}, []);
   
   const today = new Date();
   const formattedDate = today.toLocaleDateString("en-US", {
@@ -126,7 +143,7 @@ export default function Shop() {
               </g>
             </svg>
           </button>
-          <div className={styles.filterAndSort} ref={dropDown}>
+          <div className={`${styles.filterAndSort} ${filterAndSortDropdownIsActive ? styles.showDropdown : ''}`} ref={dropDown}>
             <div className={styles.sort}>
               <h3>Sort By</h3>
               <div className={styles.sortDropdown}>
