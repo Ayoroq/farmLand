@@ -7,6 +7,7 @@ export default function Shop() {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [filterAndSortDropdownIsActive, setfilterAndSortDropdownIsActive] =
     useState(false);
+  const [Sorted, setSorted] = useState(null);
   const filterAndSort = useRef(null);
   const dropDown = useRef(null);
 
@@ -38,12 +39,45 @@ export default function Shop() {
     day: "numeric",
   });
 
-  function sortByPriceAsc(){
-    setFilteredProducts([...filteredProducts].sort((a, b) => a.price - b.price));
+  function sortByPriceAsc() {
+    setFilteredProducts(
+      [...filteredProducts].sort((a, b) => a.price - b.price)
+    );
+    setSorted("ASC");
   }
-  function sortByPriceDesc(){
-    setFilteredProducts([...filteredProducts].sort((a, b) => b.price - a.price));
+  function sortByPriceDesc() {
+    setFilteredProducts(
+      [...filteredProducts].sort((a, b) => b.price - a.price)
+    );
+    setSorted("DESC");
   }
+
+  // Function to apply filters to the items
+  function applyFilters(category) {
+    let filtered = products.filter((product) => product.category === category);
+
+    if (Sorted === "ASC") {
+      filtered = [...filtered].sort((a, b) => a.price - b.price);
+    } else if (Sorted === "DESC") {
+      filtered = [...filtered].sort((a, b) => b.price - a.price);
+    }
+
+    setFilteredProducts(filtered);
+  }
+
+  
+  function filterByFruits() {
+    applyFilters("fruits");
+  }
+
+  function filterByVegetables() {
+    applyFilters("vegetables");
+  }
+
+  function filterByOrganics() {
+    applyFilters("organic");
+  }
+
   return (
     <main className={styles.shop}>
       <header className={styles.shopHeader}>
@@ -161,7 +195,10 @@ export default function Shop() {
             <div className={styles.sort}>
               <h3>Sort By</h3>
               <div className={styles.sortDropdown}>
-                <button className={styles.sortDropdownButton} onClick={sortByPriceAsc}>
+                <button
+                  className={styles.sortDropdownButton}
+                  onClick={sortByPriceAsc}
+                >
                   Price
                   <svg
                     width="15"
@@ -177,7 +214,10 @@ export default function Shop() {
                     />
                   </svg>
                 </button>
-                <button className={styles.sortDropdownButton} onClick={sortByPriceDesc}>
+                <button
+                  className={styles.sortDropdownButton}
+                  onClick={sortByPriceDesc}
+                >
                   Price
                   <svg
                     width="15"
@@ -201,14 +241,13 @@ export default function Shop() {
                 <div className={styles.filterOption}>
                   <h4>Category</h4>
                   <div className={styles.filterOptionButtons}>
-                    <button className={styles.filterOptionButton}>All</button>
-                    <button className={styles.filterOptionButton}>
+                    <button className={styles.filterOptionButton} onClick={filterByFruits}>
                       Fruits
                     </button>
-                    <button className={styles.filterOptionButton}>
+                    <button className={styles.filterOptionButton} onClick={filterByVegetables}>
                       Vegetables
                     </button>
-                    <button className={styles.filterOptionButton}>
+                    <button className={styles.filterOptionButton} onClick={filterByOrganics}>
                       Organic
                     </button>
                   </div>
