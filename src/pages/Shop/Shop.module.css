@@ -158,6 +158,15 @@
     transition: background-color 0.3s ease, color 0.3 ease;
     border-radius: 3px;
 }
+
+.filterActive{
+    background-color: #426b1f;
+    color: white;
+}
+.filterActive:hover{
+    color: black;
+}
+
 .sortControlsButton:hover, .filterControlButton:hover{
     background-color: red;
     color: white;

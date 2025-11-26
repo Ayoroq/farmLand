@@ -8,7 +8,7 @@ export default function Shop() {
   const [filters, setFilters] = useState([]);
   const [filterAndSortDropdownIsActive, setfilterAndSortDropdownIsActive] =
     useState(false);
-  const [Sorted, setSorted] = useState(null);
+  const [sorted, setSorted] = useState(null);
   const filterAndSort = useRef(null);
   const dropDown = useRef(null);
 
@@ -40,19 +40,6 @@ export default function Shop() {
     day: "numeric",
   });
 
-  function sortByPriceAsc() {
-    setFilteredProducts(
-      [...filteredProducts].sort((a, b) => a.price - b.price)
-    );
-    setSorted("ASC");
-  }
-  function sortByPriceDesc() {
-    setFilteredProducts(
-      [...filteredProducts].sort((a, b) => b.price - a.price)
-    );
-    setSorted("DESC");
-  }
-
   // Function to apply filters to the items
   function toggleFilter(filter) {
     if (filters.includes(filter)) {
@@ -69,14 +56,14 @@ export default function Shop() {
       result = products.filter((item) => filters.includes(item.category));
     }
 
-    if (Sorted === "ASC") {
+    if (sorted === "ASC") {
       result = [...result].sort((a, b) => a.price - b.price);
-    } else if (Sorted === "DESC") {
+    } else if (sorted === "DESC") {
       result = [...result].sort((a, b) => b.price - a.price);
     }
 
     setFilteredProducts(result);
-  }, [filters, Sorted]);
+  }, [filters, sorted]);
 
   return (
     <main className={styles.shop}>
@@ -197,7 +184,7 @@ export default function Shop() {
               <div className={styles.sortDropdown}>
                 <button
                   className={styles.sortDropdownButton}
-                  onClick={sortByPriceAsc}
+                  onClick={() => setSorted("ASC")}
                 >
                   Price
                   <svg
@@ -216,7 +203,7 @@ export default function Shop() {
                 </button>
                 <button
                   className={styles.sortDropdownButton}
-                  onClick={sortByPriceDesc}
+                  onClick={() => setSorted("DESC")}
                 >
                   Price
                   <svg
@@ -240,21 +227,21 @@ export default function Shop() {
               <div className={styles.filterByDropdown}>
                 <div className={styles.filterOption}>
                   <h4>Category</h4>
-                  <div className={styles.filterOptionButtons}>
+                  <div className={`${styles.filterOptionButtons}`}>
                     <button
-                      className={styles.filterOptionButton}
+                      className={`${styles.filterOptionButton} ${filters.includes('fruits') ? styles.filterActive : ""}`}
                       onClick={() => toggleFilter("fruits")}
                     >
                       Fruits
                     </button>
                     <button
-                      className={styles.filterOptionButton}
+                       className={`${styles.filterOptionButton} ${filters.includes('vegetables') ? styles.filterActive : ""}`}
                       onClick={() => toggleFilter("vegetables")}
                     >
                       Vegetables
                     </button>
                     <button
-                      className={styles.filterOptionButton}
+                       className={`${styles.filterOptionButton} ${filters.includes('organic') ? styles.filterActive : ""}`}
                       onClick={() => toggleFilter("organic")}
                     >
                       Organic
@@ -266,11 +253,14 @@ export default function Shop() {
           </div>
         </div>
       </header>
-      {(Sorted || filters.length > 0) && (
+      {(sorted || filters.length > 0) && (
         <section className={styles.filterAndSortControls}>
-          {Sorted && (
+          {sorted && (
             <div className={styles.sortControls}>
-              <p>Sorted by Price: {Sorted}</p>
+              <p>
+                Sorted by Price:{" "}
+                {sorted === "ASC" ? "Low to High" : "High to Low"}
+              </p>
               <button
                 className={styles.sortControlsButton}
                 onClick={() => setSorted(null)}
@@ -311,7 +301,7 @@ export default function Shop() {
               {filters.map((filter) => (
                 <button
                   key={filter}
-                  className={styles.filterControlButton}
+                  className={`${styles.filterControlButton}`}
                   onClick={() => toggleFilter(filter)}
                 >
                   {filter}
