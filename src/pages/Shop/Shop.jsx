@@ -33,7 +33,7 @@ export default function Shop() {
             ref={filterAndSort}
             onClick={hideAndShowDropdown}
           >
-            Filter & Sort
+            <p className={styles.filterSortDropdownText}>Filter & Sort</p>
             <svg
               width="20"
               height="20"
