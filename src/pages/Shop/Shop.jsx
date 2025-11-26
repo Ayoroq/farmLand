@@ -250,6 +250,11 @@ export default function Shop() {
                 </div>
               </div>
             </div>
+            <div className={styles.closeDropDownContainer}>
+              <button onClick={hideAndShowDropdown} className={styles.closeDropDown}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </header>
