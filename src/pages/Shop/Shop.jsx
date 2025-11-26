@@ -5,6 +5,7 @@ import { products } from "../../data/products";
 
 export default function Shop() {
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filters, setFilters] = useState([]);
   const [filterAndSortDropdownIsActive, setfilterAndSortDropdownIsActive] =
     useState(false);
   const [Sorted, setSorted] = useState(null);
@@ -60,28 +61,49 @@ export default function Shop() {
   }
 
   // Function to apply filters to the items
-  function applyFilters(category) {
-    let filtered = products.filter((product) => product.category === category);
+  function applyFilters(filter) {
+    if (!filters.includes(filter)) {
+      setFilters([...filters, filter]);
+    }
+  }
 
-    if (Sorted === "ASC") {
-      filtered = [...filtered].sort((a, b) => a.price - b.price);
-    } else if (Sorted === "DESC") {
-      filtered = [...filtered].sort((a, b) => b.price - a.price);
+  function removeFilters(filter) {
+    filters.includes(filter) && setFilters(filters.filter((f) => f !== filter));
+  }
+
+  useEffect(() => {
+    let result = products;
+
+    if (filters.length > 0) {
+      result = products.filter((item) => filters.includes(item.category));
     }
 
-    setFilteredProducts(filtered);
-  }
+    if (Sorted === "ASC") {
+      result = [...result].sort((a, b) => a.price - b.price);
+    } else if (Sorted === "DESC") {
+      result = [...result].sort((a, b) => b.price - a.price);
+    }
+
+    setFilteredProducts(result);
+  }, [filters, Sorted]);
 
   function filterByFruits() {
     applyFilters("fruits");
   }
-
   function filterByVegetables() {
     applyFilters("vegetables");
   }
-
   function filterByOrganics() {
     applyFilters("organic");
+  }
+  function removeFilterByFruits() {
+    removeFilters("fruits");
+  }
+  function removeFilterByVegetables() {
+    removeFilters("vegetables");
+  }
+  function removeFilterByOrganics() {
+    removeFilters("organic");
   }
 
   return (
@@ -276,8 +298,7 @@ export default function Shop() {
         </div>
       </header>
       <section className={styles.filterAndSortControls} ref={controls}>
-        <p className={styles.sortControls} ref={sortControl}>
-        </p>
+        <p className={styles.sortControls} ref={sortControl}></p>
         <div
           className={styles.filterControlsContainer}
           ref={filterControlContainer}

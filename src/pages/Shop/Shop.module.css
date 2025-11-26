@@ -149,4 +149,7 @@
         width: 250px;
         top: 170%;
     }
+    .shopSection{
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
 }
