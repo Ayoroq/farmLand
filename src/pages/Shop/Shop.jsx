@@ -11,6 +11,7 @@ export default function Shop() {
   const [sorted, setSorted] = useState(null);
   const filterAndSort = useRef(null);
   const dropDown = useRef(null);
+  const [inputValue, setInputValue] = useState('')
 
   function hideAndShowDropdown() {
     setfilterAndSortDropdownIsActive(!filterAndSortDropdownIsActive);
@@ -64,6 +65,32 @@ export default function Shop() {
 
     setFilteredProducts(result);
   }, [filters, sorted]);
+
+  function handleSearchInput(event){
+    setInputValue(event.target.value)
+    let result = products.filter((item) => item.name.toLowerCase().includes(inputValue.toLowerCase()))
+    setFilteredProducts(result)
+  }
+
+  if (inputValue.trim() !== '' && filteredProducts.length === 0) {
+    return (
+      <main className={styles.shop}>
+        <section className={styles.searchBar}>
+          <input
+            placeholder="Search Here"
+            className={styles.searchInput}
+            type="search"
+            value={inputValue}
+            onInput={handleSearchInput}
+          />
+        </section>
+
+        <div className={styles.noResults}>
+          <p>There's currently no product with the search term "{inputValue}"</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className={styles.shop}>
@@ -229,19 +256,27 @@ export default function Shop() {
                   <h4>Category</h4>
                   <div className={`${styles.filterOptionButtons}`}>
                     <button
-                      className={`${styles.filterOptionButton} ${filters.includes('fruits') ? styles.filterActive : ""}`}
+                      className={`${styles.filterOptionButton} ${
+                        filters.includes("fruits") ? styles.filterActive : ""
+                      }`}
                       onClick={() => toggleFilter("fruits")}
                     >
                       Fruits
                     </button>
                     <button
-                       className={`${styles.filterOptionButton} ${filters.includes('vegetables') ? styles.filterActive : ""}`}
+                      className={`${styles.filterOptionButton} ${
+                        filters.includes("vegetables")
+                          ? styles.filterActive
+                          : ""
+                      }`}
                       onClick={() => toggleFilter("vegetables")}
                     >
                       Vegetables
                     </button>
                     <button
-                       className={`${styles.filterOptionButton} ${filters.includes('organic') ? styles.filterActive : ""}`}
+                      className={`${styles.filterOptionButton} ${
+                        filters.includes("organic") ? styles.filterActive : ""
+                      }`}
                       onClick={() => toggleFilter("organic")}
                     >
                       Organic
@@ -251,13 +286,21 @@ export default function Shop() {
               </div>
             </div>
             <div className={styles.closeDropDownContainer}>
-              <button onClick={hideAndShowDropdown} className={styles.closeDropDown}>
+              <button
+                onClick={hideAndShowDropdown}
+                className={styles.closeDropDown}
+              >
                 Close
               </button>
             </div>
           </div>
         </div>
       </header>
+      <section>
+        <div className={styles.searchBar}>
+          <input placeholder="Search Here" className={styles.searchInput} type="search" value={inputValue} onInput={handleSearchInput}/>
+        </div>
+      </section>
       {(sorted || filters.length > 0) && (
         <section className={styles.filterAndSortControls}>
           {sorted && (
