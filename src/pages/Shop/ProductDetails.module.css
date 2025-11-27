@@ -2,4 +2,26 @@
   flex: 1;
   padding: 2rem;
   padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.productImage{
+    width: 100%;
+    max-width: 500px;
+    object-fit: contain;
+}
+
+.productDetail{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (max-width: 620px) {
+    .productDetail{
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

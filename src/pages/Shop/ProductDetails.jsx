@@ -25,12 +25,12 @@ const ProductDetail = () => {
           </svg>
         </Link>
       </div>
-      <div className={styles.ProductDetail}>
-        <img src={product.image} alt={product.name} />
-        <div className={styles.ProductInfo}>
+      <div className={styles.productDetail}>
+        <img src={product.image} alt={product.name} className={styles.productImage}/>
+        <div className={styles.productInfo}>
           <h2>{product.name}</h2>
           <p>{product.description}</p>
-          <p>{product.price}</p>
+          <p>${product.price} / <span>{product.unit}</span></p>
         </div>
       </div>
     </main>
