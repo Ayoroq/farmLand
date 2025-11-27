@@ -51,6 +51,9 @@ export default function Shop() {
   }
 
   useEffect(() => {
+    // When user is searching, skip category filter/sorting updates
+    if (inputValue.trim() !== '') return;
+
     let result = products;
 
     if (filters.length > 0) {
@@ -64,12 +67,19 @@ export default function Shop() {
     }
 
     setFilteredProducts(result);
-  }, [filters, sorted]);
+  }, [filters, sorted, inputValue]);
 
   function handleSearchInput(event){
-    setInputValue(event.target.value)
-    let result = products.filter((item) => item.name.toLowerCase().includes(inputValue.toLowerCase()))
-    setFilteredProducts(result)
+    const value = event.target.value;
+    setInputValue(value);
+    setFilters([]); // Reset filters when searching
+    setSorted(null); // Reset sorting when searching
+
+    let result = products.filter((item) =>
+      item.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setFilteredProducts(result);
   }
 
   if (inputValue.trim() !== '' && filteredProducts.length === 0) {
@@ -81,7 +91,7 @@ export default function Shop() {
             className={styles.searchInput}
             type="search"
             value={inputValue}
-            onInput={handleSearchInput}
+            onChange={handleSearchInput}
           />
         </section>
 
@@ -298,7 +308,7 @@ export default function Shop() {
       </header>
       <section>
         <div className={styles.searchBar}>
-          <input placeholder="Search Here" className={styles.searchInput} type="search" value={inputValue} onInput={handleSearchInput}/>
+          <input placeholder="Search Here" className={styles.searchInput} type="search" value={inputValue} onChange={handleSearchInput}/>
         </div>
       </section>
       {(sorted || filters.length > 0) && (
