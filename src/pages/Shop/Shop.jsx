@@ -406,6 +406,7 @@ export default function Shop() {
             img={product.image}
             description={product.description}
             unit={product.unit}
+            slug={product.slug}
           />
         ))}
       </section>
