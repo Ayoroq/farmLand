@@ -7,21 +7,26 @@
   gap: 2rem;
 }
 
-.productImage{
-    width: 100%;
-    max-width: 500px;
-    object-fit: contain;
+.productDetail {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
-.productDetail{
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+.productImage {
+  width: 100%;
+  max-width: 500px;
+  object-fit: contain;
 }
 
-@media (max-width: 620px) {
-    .productDetail{
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.productInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 750px) {
+  .productDetail {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
