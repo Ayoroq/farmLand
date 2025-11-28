@@ -26,8 +26,19 @@ export default function BasketProvider({ children }) {
     setBasket((prev) => prev.filter((i) => i.id !== item.id));
   };
 
+  // Clear the basket
+  const clearBasket = () => {
+    setBasket([]);
+  };
+
+// Get the total number of items in the cart
+  const getTotalItems = () => {
+    return basket.length;
+  };
+
+
   return (
-    <BasketContext.Provider value={{ basket, addToBasket, removeFromBasket}}>
+    <BasketContext.Provider value={{ basket, addToBasket, removeFromBasket, clearBasket, getTotalItems }}>
       {children}
     </BasketContext.Provider>
   );
