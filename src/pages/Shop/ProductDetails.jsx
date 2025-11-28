@@ -2,8 +2,12 @@ import { Link } from "react-router";
 import styles from "./ProductDetails.module.css";
 import { useParams } from "react-router";
 import { products } from "../../data/products";
+import { useContext } from "react";
+import { BasketContext } from "../../context/BasketContext";
+
 
 const ProductDetail = () => {
+  const basket = useContext(BasketContext);
   const { slug } = useParams();
   const product = products.find((product) => product.slug === slug);
   return (
@@ -31,6 +35,7 @@ const ProductDetail = () => {
           <h2>{product.name}</h2>
           <p>{product.description}</p>
           <p>${product.price} / <span>{product.unit}</span></p>
+          <button onClick={() => basket.addToBasket(product)}>Add to Basket</button>
         </div>
       </div>
     </main>

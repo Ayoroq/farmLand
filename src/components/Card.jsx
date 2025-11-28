@@ -1,7 +1,10 @@
 import styles from "./Card.module.css";
 import { Link } from "react-router";
+import { useContext } from "react";
+import { BasketContext } from "../context/BasketContext";
 
 export default function shopCard(props) {
+  const basket = useContext(BasketContext);
   return (
     <Link to={`/shop/${props.slug}`} className={styles.ShopCard}>
       <div className={styles.ShopCardImgContainer}>
@@ -16,6 +19,7 @@ export default function shopCard(props) {
         <p>
           ${props.price} / <span>{props.unit}</span>
         </p>
+        <button onClick={() => basket.addToBasket(props)}>Add to Basket</button>
       </div>
     </Link>
   );
