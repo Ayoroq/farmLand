@@ -3,15 +3,12 @@ import { createContext, useState, useEffect, use } from "react";
 export const BasketContext = createContext(null);
 
 export default function BasketProvider({ children }) {
-  const [basket, setBasket] = useState([]);
-
   // get the items in the basket if they already exists
-  useEffect(() => {
-    const basket = localStorage.getItem("basket");
-    if (basket) {
-      setBasket(JSON.parse(basket));
-    }
-  }, []);
+  const [basket, setBasket] = useState(
+    localStorage.getItem("basket")
+      ? JSON.parse(localStorage.getItem("basket"))
+      : []
+  );
 
   // Update the localStorage when the basket item changes
   useEffect(() => {
@@ -31,14 +28,21 @@ export default function BasketProvider({ children }) {
     setBasket([]);
   };
 
-// Get the total number of items in the cart
+  // Get the total number of items in the cart
   const getTotalItems = () => {
     return basket.length;
   };
 
-
   return (
-    <BasketContext.Provider value={{ basket, addToBasket, removeFromBasket, clearBasket, getTotalItems }}>
+    <BasketContext.Provider
+      value={{
+        basket,
+        addToBasket,
+        removeFromBasket,
+        clearBasket,
+        getTotalItems,
+      }}
+    >
       {children}
     </BasketContext.Provider>
   );
