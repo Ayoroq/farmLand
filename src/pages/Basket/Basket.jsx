@@ -1,45 +1,38 @@
 import styles from "./Basket.module.css";
-import {useContext} from "react";
-import {BasketContext} from "../../context/BasketContext.jsx";
+import { useContext } from "react";
+import { BasketContext } from "../../context/BasketContext.jsx";
 
 export default function Basket() {
   const basket = useContext(BasketContext);
   const totalItems = basket.getTotalItems();
   return (
-    !totalItems && (
-      <main className={styles.basketMain}>
+    <main className={styles.basketMain}>
+      {!totalItems && (
         <div className={styles.basketEmpty}>
-            YOUR CART IS EMPTY
+          <h2>Your basket is empty</h2>
+          <p>Start adding items to your basket</p>
         </div>
-      </main>
-    )
-    ||
-    (
-      <main className={styles.basketMain}>
+      )}
+      {totalItems > 0 && (
         <div className={styles.basketContainer}>
           <div className={styles.basketItems}>
-            {basket.basket.map((item) => (
-              <div className={styles.basketItem} key={item.id}>
-                <div className={styles.basketItemImgContainer}>
-                  <img src={item.image} alt={item.name} className={styles.basketItemImg} />
-                </div>
-                <div className={styles.basketItemDetailsContainer}>
+            {basket.basket.map((item, index) => (
+              <div className={styles.basketItem} key={index}>
+                <img src={item.image} alt={item.name} />
+                <div className={styles.basketItemDetails}>
                   <h3>{item.name}</h3>
-                  <p>
-                    ${item.price} / <span>{item.unit}</span>
-                  </p>
+                  <p>${item.price} / <span>{item.unit}</span></p>
+                  <div className={styles.basketItemQuantity}>
+                    <button onClick={() => basket.removeFromBasket(item)}>-</button>
+                    <p>{item.quantity}</p>
+                    <button onClick={() => basket.addToBasket(item)}>+</button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-          <div className={styles.basketSummary}>
-            <h3>Summary</h3>
-            <p>Total Items: {totalItems}</p>
-            <p>Total Price: ${basket.basket.reduce((acc, item) => acc + item.price, 0)}</p>
-            <button>Checkout</button>
-          </div>
         </div>
-      </main>
-    )
+      )}
+    </main>
   );
-} 
+}
