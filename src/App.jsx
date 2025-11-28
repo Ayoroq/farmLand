@@ -2,9 +2,8 @@ import { Outlet } from "react-router";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import style from "./App.module.css";
-import { BasketContext } from "./context/BasketContext.jsx";
+import { BasketContext, BasketProvider } from "./context/BasketContext.jsx";
 import { gsap } from "gsap";
-
 import { ReactLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
 
@@ -24,11 +23,11 @@ export default function App() {
   return (
     <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
       <div className={style.app}>
-        <BasketContext.Provider value={{ items: [] }}>
+        <BasketProvider>
           <Navbar />
           <Outlet />
           <Footer />
-        </BasketContext.Provider>
+        </BasketProvider>
       </div>
     </ReactLenis>
   );
