@@ -25,6 +25,13 @@
   color: rgb(75, 75, 75);
 }
 
+/* Basket Main */
+
+.basketMain{
+    display: flex;
+    justify-content: space-between;
+}
+
 .basketEmpty {
   flex: 1;
   display: flex;
