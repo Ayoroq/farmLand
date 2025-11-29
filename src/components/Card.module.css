@@ -33,6 +33,16 @@
 
 .CartCardLeft {
   display: flex;
+  gap: 1rem;
+}
+
+.CartCardDetailsContainer, .CartCardRight{
+padding-top: 0.5rem;
+}
+
+.CartCardDetailsContainer p{
+    color: #426B1F;
+    font-weight: 600;
 }
 
 .CartCardImg {
