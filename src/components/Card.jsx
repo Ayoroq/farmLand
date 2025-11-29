@@ -42,10 +42,7 @@ function CartCard(props) {
           <p>
             ${props.price} / <span>{props.unit}</span>
           </p>
-          <div className={styles.CartCardQuantityContainer}>
-            <button onClick={() => basket.removeFromBasket(props)}>-</button>
-            <p>{props.quantity}</p>
-            <button onClick={() => basket.addToBasket(props)}>+</button>
+          <div className={styles.CartCardQuantity}>
           </div>
         </div>
       </div>

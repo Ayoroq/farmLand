@@ -15,8 +15,18 @@ export default function BasketProvider({ children }) {
     localStorage.setItem("basket", JSON.stringify(basket));
   }, [basket]);
 
-  const addToBasket = (item) => {
-    setBasket((prev) => [...prev, item]);
+  const addToBasket = (item, quantity = 1) => {
+    if (basket.find((i) => i.id === item.id)) {
+      setBasket((prev) => prev.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i)))
+    } else {
+      setBasket((prev) => [...prev, { ...item, quantity }]);
+    }
+  };
+
+  const changeQuantity = (item, quantity) => {
+    setBasket((prev) =>
+      prev.map((i) => (i.id === item.id ? { ...i, quantity } : i))
+    );
   };
 
   const removeFromBasket = (item) => {
@@ -41,6 +51,7 @@ export default function BasketProvider({ children }) {
         removeFromBasket,
         clearBasket,
         getTotalItems,
+        changeQuantity
       }}
     >
       {children}
