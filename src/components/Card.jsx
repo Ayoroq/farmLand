@@ -29,23 +29,32 @@ function CartCard(props) {
   const basket = useContext(BasketContext);
   return (
     <div className={styles.CartCard}>
-      <div className={styles.CartCardImgContainer}>
-        <img
-          src={props.img}
-          alt={props.description}
-          className={styles.CartCardImg}
-        />
-      </div>
-      <div className={styles.CartCardDetailsContainer}>
-        <h3>{props.name}</h3>
-        <p>
-          ${props.price} / <span>{props.unit}</span>
-        </p>
-        <div className={styles.CartCardQuantity}>
-          <button onClick={() => basket.removeFromBasket(props)}>-</button>
-          <p>{props.quantity}</p>
-          <button onClick={() => basket.addToBasket(props)}>+</button>
+      <div className={styles.CartCardLeft}>
+        <div className={styles.CartCardImgContainer}>
+          <img
+            src={props.image}
+            alt={props.description}
+            className={styles.CartCardImg}
+          />
         </div>
+        <div className={styles.CartCardDetailsContainer}>
+          <h3>{props.name}</h3>
+          <p>
+            ${props.price} / <span>{props.unit}</span>
+          </p>
+          <div className={styles.CartCardQuantityContainer}>
+            <button onClick={() => basket.removeFromBasket(props)}>-</button>
+            <p>{props.quantity}</p>
+            <button onClick={() => basket.addToBasket(props)}>+</button>
+          </div>
+        </div>
+      </div>
+      <div className={styles.CartCardRight}>
+        <button onClick={() => basket.removeFromBasket(props)}>Remove</button>
+        <p>
+          $
+          {(props.price * props.quantity).toFixed(2)}
+        </p>
       </div>
     </div>
   );

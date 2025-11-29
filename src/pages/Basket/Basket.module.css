@@ -28,8 +28,20 @@
 /* Basket Main */
 
 .basketMain{
+    padding-top: 2rem;
     display: flex;
     justify-content: space-between;
+    gap: 3rem;
+}
+
+.basketContainer{
+    flex: 1;
+}
+
+.basketItems{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .basketEmpty {

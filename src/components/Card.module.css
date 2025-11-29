@@ -1,23 +1,44 @@
-.ShopCard{
-    display: flex;
-    flex-direction: column;
-    border: 2px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    width: fit-content;
+.ShopCard {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
 }
 
-.ShopCardImgContainer{
-    flex: 1;
+.ShopCardImgContainer {
+  flex: 1;
 }
 
-.ShopCardImg{
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    height: 100%;
+.ShopCardImg {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 100%;
 }
 
-.ShopCardDetailsContainer{
-    background-color: #FAFAF5;
+.ShopCardDetailsContainer {
+  background-color: #fafaf5;
+}
+
+/* Cart Card */
+
+.CartCard {
+  display: flex;
+  background-color: #FAFAF5;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.CartCardLeft {
+  display: flex;
+}
+
+.CartCardImg {
+  width: 100%;
+  max-width: 100px;
+  object-fit: cover;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
 }
