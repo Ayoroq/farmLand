@@ -53,3 +53,25 @@
   align-items: center;
   justify-content: center;
 }
+
+
+/* CheckOut */
+.basketCheckout{
+    display: flex;
+    flex-direction: column;
+    background-color: #fafaf5;
+    gap: 2rem;
+    height: fit-content;
+}
+
+.basketCheckoutDetailsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.basketCheckoutDetails{
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+}

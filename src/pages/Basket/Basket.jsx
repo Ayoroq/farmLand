@@ -1,11 +1,17 @@
 import styles from "./Basket.module.css";
 import { useContext } from "react";
 import { BasketContext } from "../../context/BasketContext.jsx";
-import {CartCard} from "../../components/Card.jsx"
+import { CartCard } from "../../components/Card.jsx";
 
 export default function Basket() {
   const basket = useContext(BasketContext);
   const totalItems = basket.getTotalItems();
+  const taxAmount = basket.getTax()
+  const total = basket.basket.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+  const totalAfterTax = parseFloat(total + taxAmount).toFixed(2);
   return (
     <div className={styles.basket}>
       <header className={styles.basketHeader}>
@@ -27,33 +33,42 @@ export default function Basket() {
               <div className={styles.basketItems}>
                 {basket.basket.map((item, index) => (
                   <div key={index} className={styles.basketItem}>
-                    {CartCard(item)}
+                    <CartCard {...item} />
                   </div>
                 ))}
               </div>
             </section>
             <section className={styles.basketCheckout}>
-              <div className={styles.basketCheckoutDetails}>
-                <h3>Subtotal</h3>
-                <p>
-                  $
-                  {basket.basket
-                    .reduce((acc, item) => acc + item.price * item.quantity, 0)
-                    .toFixed(2)}
-                </p>
-              </div>
-              <div className={styles.basketCheckoutDetails}>
-                <h3>Shipping</h3>
-                <p>Free</p>
-              </div>
-              <div className={styles.basketCheckoutDetails}>
-                <h3>Total</h3>
-                <p>
-                  $
-                  {basket.basket
-                    .reduce((acc, item) => acc + item.price * item.quantity, 0)
-                    .toFixed(2)}
-                </p>
+              <header className={styles.basketCheckoutHeader}>
+                <h1>Order Summary</h1>
+              </header>
+              <div className={styles.basketCheckoutDetailsContainer}>
+                <div className={styles.basketCheckoutDetails}>
+                  <p className={styles.basketCheckoutDetailsHeader}>Subtotal</p>
+                  <p>
+                    $
+                    {basket.basket
+                      .reduce(
+                        (acc, item) => acc + item.price * item.quantity,
+                        0
+                      )
+                      .toFixed(2)}
+                  </p>
+                </div>
+                <div className={styles.basketCheckoutDetails}>
+                  <p className={styles.basketCheckoutDetailsHeader}>Shipping</p>
+                  <p>Free</p>
+                </div>
+                <div className={styles.basketCheckoutDetails}>
+                  <p className={styles.basketCheckoutDetailsHeader}>Tax</p>
+                  <p>${taxAmount}</p>
+                </div>
+                <div className={styles.basketCheckoutDetails}>
+                  <h3>Total</h3>
+                  <p>
+                    ${totalAfterTax}
+                  </p>
+                </div>
               </div>
               <button>Checkout</button>
             </section>

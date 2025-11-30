@@ -43,6 +43,10 @@ export default function BasketProvider({ children }) {
     return basket.length;
   };
 
+  const getTax = () => {
+    return (basket.reduce((acc, item) => acc + item.price * item.quantity, 0) * 0.1).toFixed(2);
+  }
+
   return (
     <BasketContext.Provider
       value={{
@@ -51,7 +55,8 @@ export default function BasketProvider({ children }) {
         removeFromBasket,
         clearBasket,
         getTotalItems,
-        changeQuantity
+        changeQuantity, 
+        getTax
       }}
     >
       {children}
