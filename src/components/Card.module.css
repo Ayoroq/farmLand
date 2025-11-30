@@ -26,7 +26,7 @@
 
 .CartCard {
   display: flex;
-  background-color: #FAFAF5;
+  background-color: #fafaf5;
   justify-content: space-between;
   border-radius: 24px;
   border: 1px solid rgb(213, 211, 211);
@@ -37,28 +37,29 @@
   gap: 1rem;
 }
 
-.CartCardRight{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-right: 0.5rem;
-    padding-bottom: 0.5rem;
+.CartCardRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
 }
 
-.CartCardRemove{
-    border: none;
-    align-self: center;
-    background-color: transparent;
-    cursor: pointer;
+.CartCardRemove {
+  border: none;
+  align-self: center;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.CartCardDetailsContainer, .CartCardRight{
-padding-top: 0.5rem;
+.CartCardDetailsContainer,
+.CartCardRight {
+  padding-top: 0.5rem;
 }
 
-.CartCardDetailsContainer p{
-    color: #426B1F;
-    font-weight: 600;
+.CartCardDetailsContainer p {
+  color: #426b1f;
+  font-weight: 600;
 }
 
 .CartCardImg {
@@ -68,4 +69,10 @@ padding-top: 0.5rem;
   object-fit: cover;
   height: 100%;
   border-radius: 24px 0 0 24px;
+}
+
+.CartCardAmount {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
 }

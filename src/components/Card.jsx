@@ -46,7 +46,7 @@ function CartCard(props) {
         </div>
       </div>
       <div className={styles.CartCardRight}>
-        <p>${(props.price * props.quantity).toFixed(2)}</p>
+        <p className={styles.CartCardAmount}>${(props.price * props.quantity).toFixed(2)}</p>
         <button onClick={() => basket.removeFromBasket(props)} className={styles.CartCardRemove}>
           <svg
             width="20"
