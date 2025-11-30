@@ -44,7 +44,19 @@ export default function BasketProvider({ children }) {
   };
 
   const getTax = () => {
-    return (basket.reduce((acc, item) => acc + item.price * item.quantity, 0) * 0.1).toFixed(2);
+    return parseFloat(basket.reduce((acc, item) => acc + item.price * item.quantity, 0) * 0.1);
+  }
+
+  const getSubTotal = () => {
+    return parseFloat(basket.reduce((acc, item) => acc + item.price * item.quantity, 0));
+  }
+
+  const getShipping = () => {
+    return parseFloat(8);
+  }
+
+  const getTotal = () => {
+    return parseFloat(getSubTotal() + getTax() + getShipping());
   }
 
   return (
@@ -56,7 +68,10 @@ export default function BasketProvider({ children }) {
         clearBasket,
         getTotalItems,
         changeQuantity, 
-        getTax
+        getSubTotal,
+        getTax, 
+        getShipping,
+        getTotal
       }}
     >
       {children}

@@ -6,12 +6,10 @@ import { CartCard } from "../../components/Card.jsx";
 export default function Basket() {
   const basket = useContext(BasketContext);
   const totalItems = basket.getTotalItems();
-  const taxAmount = basket.getTax()
-  const total = basket.basket.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
-  const totalAfterTax = parseFloat(total + taxAmount).toFixed(2);
+  const taxAmount = basket.getTax().toFixed(2);
+  const shipping = basket.getShipping();
+  const subTotal = basket.getSubTotal().toFixed(2);
+  const totalAfterTaxAndShipping = basket.getTotal().toFixed(2);
   return (
     <div className={styles.basket}>
       <header className={styles.basketHeader}>
@@ -46,18 +44,12 @@ export default function Basket() {
                 <div className={styles.basketCheckoutDetails}>
                   <p className={styles.basketCheckoutDetailsHeader}>Subtotal</p>
                   <p>
-                    $
-                    {basket.basket
-                      .reduce(
-                        (acc, item) => acc + item.price * item.quantity,
-                        0
-                      )
-                      .toFixed(2)}
+                    ${subTotal}
                   </p>
                 </div>
                 <div className={styles.basketCheckoutDetails}>
                   <p className={styles.basketCheckoutDetailsHeader}>Shipping</p>
-                  <p>Free</p>
+                  <p>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</p>
                 </div>
                 <div className={styles.basketCheckoutDetails}>
                   <p className={styles.basketCheckoutDetailsHeader}>Tax</p>
@@ -66,7 +58,7 @@ export default function Basket() {
                 <div className={styles.basketCheckoutDetails}>
                   <h3>Total</h3>
                   <p>
-                    ${totalAfterTax}
+                    ${totalAfterTaxAndShipping}
                   </p>
                 </div>
               </div>
