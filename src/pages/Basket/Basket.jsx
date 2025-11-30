@@ -43,9 +43,7 @@ export default function Basket() {
               <div className={styles.basketCheckoutDetailsContainer}>
                 <div className={styles.basketCheckoutDetails}>
                   <p className={styles.basketCheckoutDetailsHeader}>Subtotal</p>
-                  <p>
-                    ${subTotal}
-                  </p>
+                  <p>${subTotal}</p>
                 </div>
                 <div className={styles.basketCheckoutDetails}>
                   <p className={styles.basketCheckoutDetailsHeader}>Shipping</p>
@@ -57,12 +55,25 @@ export default function Basket() {
                 </div>
                 <div className={styles.basketCheckoutDetails}>
                   <h3>Total</h3>
-                  <p>
-                    ${totalAfterTaxAndShipping}
-                  </p>
+                  <p>${totalAfterTaxAndShipping}</p>
                 </div>
               </div>
-              <button>Checkout</button>
+              <button className={styles.checkOutButton}>
+                <p>Continue to Payment</p>
+                <svg
+                  width="22"
+                  height="15"
+                  viewBox="0 0 22 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    id="Arrow 1"
+                    d="M1 6.36401C0.447715 6.36401 0 6.81173 0 7.36401C0 7.9163 0.447715 8.36401 1 8.36401V7.36401V6.36401ZM21.7071 8.07112C22.0976 7.6806 22.0976 7.04743 21.7071 6.65691L15.3431 0.292946C14.9526 -0.0975784 14.3195 -0.0975784 13.9289 0.292946C13.5384 0.68347 13.5384 1.31664 13.9289 1.70716L19.5858 7.36401L13.9289 13.0209C13.5384 13.4114 13.5384 14.0446 13.9289 14.4351C14.3195 14.8256 14.9526 14.8256 15.3431 14.4351L21.7071 8.07112ZM1 7.36401V8.36401L21 8.36401V7.36401V6.36401L1 6.36401V7.36401Z"
+                    fill="currentcolor"
+                  />
+                </svg>
+              </button>
             </section>
           </>
         )}
