@@ -89,4 +89,14 @@
   align-items: center;
   min-width: 300px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+}
+
+.checkOutButton:hover{
+    background-color: #73bc33;
+    transform: translateY(-3px);
+}
+
+.checkOutButton:active{
+    transform: translateY(3px);
 }
