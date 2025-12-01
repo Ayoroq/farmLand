@@ -187,9 +187,14 @@
     }
     .filterAndSort{
         width: 250px;
-        top: 170%;
+        top: 240%;
     }
     .shopSection{
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
+  .headerleft{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
 }
