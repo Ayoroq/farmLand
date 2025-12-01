@@ -51,6 +51,11 @@
   align-self: center;
   background-color: transparent;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.CartCardRemove:hover{
+    transform: scale(1.2);
 }
 
 .CartCardDetailsContainer{
@@ -62,7 +67,7 @@
 
 .CartCardDetailsContainer,
 .CartCardRight {
-  padding-top: 0.5rem;
+  padding-top: 1rem;
 }
 
 .CartCardDetailsContainer p {
@@ -104,6 +109,7 @@
   color: black !important;
   display: flex;
   gap: 0.25rem;
+  align-items: center;
 }
 
 .CartCardQuantityButtons{
@@ -115,7 +121,20 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: large;
+  font-size: larger;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+.CartCardQuantityButton:hover{
+    transform: scale(1.1);
+}
+
+.CartCardQuantityButtonSub:hover{
+    color: red;
+}
+
+.CartCardQuantityButtonAdd:hover{
+    color: #426b1f;
 }
 
 .quantityInput {
@@ -123,6 +142,11 @@
   field-sizing: content;
   border: none;
   background: transparent;
+}
+
+.QuantityUnit{
+    font-size: medium;
+    font-weight: 400;
 }
 
 .quantityInput::-webkit-outer-spin-button,

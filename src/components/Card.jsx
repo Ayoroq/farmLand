@@ -1,11 +1,11 @@
 import styles from "./Card.module.css";
 import { Link } from "react-router";
-import { useContext,useState } from "react";
+import { useContext, useState } from "react";
 import { BasketContext } from "../context/BasketContext";
 
 export default function ShopCard(props) {
   const basket = useContext(BasketContext);
-  
+
   const handleAddToBasket = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -62,19 +62,68 @@ function CartCard(props) {
           </p>
           <div className={styles.CartCardQuantity}>
             <p className={styles.CartCardQuantityLabel}>
-              <input type="number" readOnly min={0} className={styles.quantityInput} value={quantity}/>
-              {props.unit}
+              <input
+                type="number"
+                readOnly
+                min={0}
+                className={styles.quantityInput}
+                value={quantity}
+              />
+              <span className={styles.QuantityUnit}>{props.unit}</span>
             </p>
             <div className={styles.CartCardQuantityButtons}>
-              <button onClick={decreaseQuantity} className={styles.CartCardQuantityButton}>-</button>
-              <button onClick={increaseQuantity} className={styles.CartCardQuantityButton}>+</button>
+              <button
+                onClick={decreaseQuantity}
+                className={`${styles.CartCardQuantityButton} ${styles.CartCardQuantityButtonSub}`}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="remove">
+                    <path
+                      id="Vector"
+                      d="M10 25.5V22.5H38V25.5H10Z"
+                      fill="currentcolor"
+                    />
+                  </g>
+                </svg>
+              </button>
+              <button
+                onClick={increaseQuantity}
+                className={`${styles.CartCardQuantityButton} ${styles.CartCardQuantityButtonAdd}`}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="add">
+                    <path
+                      id="Vector"
+                      d="M22.5 42V25.5H6V22.5H22.5V6H25.5V22.5H42V25.5H25.5V42H22.5Z"
+                      fill="currentcolor"
+                    />
+                  </g>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.CartCardRight}>
-        <p className={styles.CartCardAmount}>${(props.price * props.quantity).toFixed(2)}</p>
-        <button onClick={() => basket.removeFromBasket(props)} className={styles.CartCardRemove}>
+        <p className={styles.CartCardAmount}>
+          ${(props.price * props.quantity).toFixed(2)}
+        </p>
+        <button
+          onClick={() => basket.removeFromBasket(props)}
+          className={styles.CartCardRemove}
+        >
           <svg
             width="20"
             height="20"
