@@ -6,7 +6,7 @@ export default function BasketProvider({ children }) {
   // get the items in the basket if they already exists
   const [basket, setBasket] = useState(() => {
     try {
-      const stored = localStorage.getItem('basket');
+      const stored = localStorage.getItem("basket");
       return stored ? JSON.parse(stored) : [];
     } catch (error) {
       console.error(error);
@@ -21,15 +21,19 @@ export default function BasketProvider({ children }) {
 
   const addToBasket = (item, quantity = 1) => {
     if (basket.find((i) => i.id === item.id)) {
-      setBasket((prev) => prev.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i)))
-      return
+      setBasket((prev) =>
+        prev.map((i) =>
+          i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i
+        )
+      );
+      return;
     } else {
       setBasket((prev) => [...prev, { ...item, quantity }]);
     }
   };
 
   const changeQuantity = (item, quantity) => {
-    if(isNaN(quantity) || quantity < 1) return
+    if (isNaN(quantity) || quantity < 1) return;
     setBasket((prev) =>
       prev.map((i) => (i.id === item.id ? { ...i, quantity } : i))
     );
@@ -46,24 +50,24 @@ export default function BasketProvider({ children }) {
 
   // Get the total number of items in the cart
   const getTotalItems = () => {
-    return basket.length;
+    return basket.reduce((acc, item) => acc + item.quantity, 0);
+  };
+
+  const getSubTotal = () => {
+    return basket.reduce((acc, item) => acc + item.price * item.quantity, 0);
   };
 
   const getTax = () => {
-    return (basket.reduce((acc, item) => acc + item.price * item.quantity, 0) * 0.1);
-  }
-
-  const getSubTotal = () => {
-    return (basket.reduce((acc, item) => acc + item.price * item.quantity, 0));
-  }
+    return getSubTotal() * 0.1;
+  };
 
   const getShipping = () => {
     return 8;
-  }
+  };
 
   const getTotal = () => {
-    return (getSubTotal() + getTax() + getShipping());
-  }
+    return getSubTotal() + getTax() + getShipping();
+  };
 
   return (
     <BasketContext.Provider
@@ -73,11 +77,11 @@ export default function BasketProvider({ children }) {
         removeFromBasket,
         clearBasket,
         getTotalItems,
-        changeQuantity, 
+        changeQuantity,
         getSubTotal,
-        getTax, 
+        getTax,
         getShipping,
-        getTotal
+        getTotal,
       }}
     >
       {children}

@@ -3,8 +3,15 @@ import { Link } from "react-router";
 import { useContext } from "react";
 import { BasketContext } from "../context/BasketContext";
 
-export default function shopCard(props) {
+export default function ShopCard(props) {
   const basket = useContext(BasketContext);
+  
+  const handleAddToBasket = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    basket.addToBasket(props);
+  };
+
   return (
     <Link to={`/shop/${props.slug}`} className={styles.ShopCard}>
       <div className={styles.ShopCardImgContainer}>
@@ -19,7 +26,7 @@ export default function shopCard(props) {
         <p>
           ${props.price} / <span>{props.unit}</span>
         </p>
-        <button onClick={() => basket.addToBasket(props)}>Add to Basket</button>
+        <button onClick={handleAddToBasket}>Add to Basket</button>
       </div>
     </Link>
   );
