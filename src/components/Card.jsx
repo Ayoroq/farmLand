@@ -35,6 +35,16 @@ export default function ShopCard(props) {
 function CartCard(props) {
   const basket = useContext(BasketContext);
   const [quantity, setQuantity] = useState(props.quantity);
+
+  function increaseQuantity() {
+    basket.changeQuantity(props, props.quantity + 1);
+    setQuantity(props.quantity + 1);
+  }
+  function decreaseQuantity() {
+    basket.changeQuantity(props, props.quantity - 1);
+    setQuantity(props.quantity - 1);
+  }
+
   return (
     <div className={styles.CartCard}>
       <div className={styles.CartCardLeft}>
@@ -55,6 +65,10 @@ function CartCard(props) {
               <input type="number" readOnly min={0} className={styles.quantityInput} value={quantity}/>
               {props.unit}
             </p>
+            <div className={styles.CartCardQuantityButtons}>
+              <button onClick={decreaseQuantity} className={styles.CartCardQuantityButton}>-</button>
+              <button onClick={increaseQuantity} className={styles.CartCardQuantityButton}>+</button>
+            </div>
           </div>
         </div>
       </div>

@@ -34,6 +34,10 @@ export default function BasketProvider({ children }) {
 
   const changeQuantity = (item, quantity) => {
     if (isNaN(quantity) || quantity < 1) return;
+    if (quantity <= 0) {
+      removeFromBasket(item);
+      return;
+    }
     setBasket((prev) =>
       prev.map((i) => (i.id === item.id ? { ...i, quantity } : i))
     );

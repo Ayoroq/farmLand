@@ -29,6 +29,7 @@
   background-color: #fafaf5;
   justify-content: space-between;
   border-radius: 24px;
+  gap: 2rem;
   border: 1px solid rgb(213, 211, 211);
 }
 
@@ -42,7 +43,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding-right: 1rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
 }
 
 .CartCardRemove {
@@ -50,6 +51,13 @@
   align-self: center;
   background-color: transparent;
   cursor: pointer;
+}
+
+.CartCardDetailsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
 }
 
 .CartCardDetailsContainer,
@@ -78,8 +86,43 @@
 }
 
 /* Quantity */
+.CartCardQuantity {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.CartCardQuantity {
+  background-color: white;
+  width: fit-content;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid rgb(213, 211, 211);
+  border-radius: 24px;
+}
+
 .CartCardQuantityLabel {
-    color: black !important;;
+  color: black !important;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.CartCardQuantityButtons{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.CartCardQuantityButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: large;
+}
+
+.quantityInput {
+  text-align: center;
+  field-sizing: content;
+  border: none;
+  background: transparent;
 }
 
 .quantityInput::-webkit-outer-spin-button,
