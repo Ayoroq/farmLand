@@ -4,11 +4,15 @@ export const BasketContext = createContext(null);
 
 export default function BasketProvider({ children }) {
   // get the items in the basket if they already exists
-  const [basket, setBasket] = useState(
-    localStorage.getItem("basket")
-      ? JSON.parse(localStorage.getItem("basket"))
-      : []
-  );
+  const [basket, setBasket] = useState(() => {
+    try {
+      const stored = localStorage.getItem('basket');
+      return stored ? JSON.parse(stored) : [];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  });
 
   // Update the localStorage when the basket item changes
   useEffect(() => {
@@ -18,12 +22,14 @@ export default function BasketProvider({ children }) {
   const addToBasket = (item, quantity = 1) => {
     if (basket.find((i) => i.id === item.id)) {
       setBasket((prev) => prev.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i)))
+      return
     } else {
       setBasket((prev) => [...prev, { ...item, quantity }]);
     }
   };
 
   const changeQuantity = (item, quantity) => {
+    if(isNaN(quantity) || quantity < 1) return
     setBasket((prev) =>
       prev.map((i) => (i.id === item.id ? { ...i, quantity } : i))
     );
@@ -44,19 +50,19 @@ export default function BasketProvider({ children }) {
   };
 
   const getTax = () => {
-    return parseFloat(basket.reduce((acc, item) => acc + item.price * item.quantity, 0) * 0.1);
+    return (basket.reduce((acc, item) => acc + item.price * item.quantity, 0) * 0.1);
   }
 
   const getSubTotal = () => {
-    return parseFloat(basket.reduce((acc, item) => acc + item.price * item.quantity, 0));
+    return (basket.reduce((acc, item) => acc + item.price * item.quantity, 0));
   }
 
   const getShipping = () => {
-    return parseFloat(8);
+    return 8;
   }
 
   const getTotal = () => {
-    return parseFloat(getSubTotal() + getTax() + getShipping());
+    return (getSubTotal() + getTax() + getShipping());
   }
 
   return (
