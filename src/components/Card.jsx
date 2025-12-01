@@ -1,6 +1,6 @@
 import styles from "./Card.module.css";
 import { Link } from "react-router";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { BasketContext } from "../context/BasketContext";
 
 export default function ShopCard(props) {
@@ -34,6 +34,7 @@ export default function ShopCard(props) {
 
 function CartCard(props) {
   const basket = useContext(BasketContext);
+  const [quantity, setQuantity] = useState(props.quantity);
   return (
     <div className={styles.CartCard}>
       <div className={styles.CartCardLeft}>
@@ -49,7 +50,12 @@ function CartCard(props) {
           <p>
             ${props.price} / <span>{props.unit}</span>
           </p>
-          <div className={styles.CartCardQuantity}></div>
+          <div className={styles.CartCardQuantity}>
+            <p className={styles.CartCardQuantityLabel}>
+              <input type="number" readOnly min={0} className={styles.quantityInput} value={quantity}/>
+              {props.unit}
+            </p>
+          </div>
         </div>
       </div>
       <div className={styles.CartCardRight}>

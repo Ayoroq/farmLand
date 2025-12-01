@@ -76,3 +76,14 @@
   font-weight: 600;
   font-size: 15px;
 }
+
+/* Quantity */
+.CartCardQuantityLabel {
+    color: black !important;;
+}
+
+.quantityInput::-webkit-outer-spin-button,
+.quantityInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
