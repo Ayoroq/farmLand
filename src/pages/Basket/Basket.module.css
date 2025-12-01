@@ -88,7 +88,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 300px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease-in-out;
 }
@@ -100,4 +99,10 @@
 
 .checkOutButton:active{
     transform: translateY(3px);
+}
+
+@media(max-width: 850px) {
+    .basketMain{
+        flex-direction: column;
+    }
 }
