@@ -16,7 +16,7 @@ export default function ShopCard(props) {
     <Link to={`/shop/${props.slug}`} className={styles.ShopCard}>
       <div className={styles.ShopCardImgContainer}>
         <img
-          src={props.img}
+          src={props.image}
           alt={props.description}
           className={styles.ShopCardImg}
         />

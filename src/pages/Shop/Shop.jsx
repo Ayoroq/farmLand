@@ -399,15 +399,7 @@ export default function Shop() {
       )}
       <section className={styles.shopSection}>
         {filteredProducts.map((product) => (
-          <ShopCard
-            key={product.id}
-            name={product.name}
-            price={product.price}
-            img={product.image}
-            description={product.description}
-            unit={product.unit}
-            slug={product.slug}
-          />
+          <ShopCard key={product.id} {...product} />
         ))}
       </section>
     </main>
