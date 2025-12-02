@@ -137,8 +137,8 @@ export const products = [
 
   {
     id: 13,
-    name: "Free-Range Eggs",
-    slug: "free-range-eggs",
+    name: "Eggs",
+    slug: "eggs",
     price: 6.59,
     category: "organic",
     image: "/images/eggs.jpg",

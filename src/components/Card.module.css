@@ -16,10 +16,27 @@
   display: block;
   object-fit: cover;
   height: 100%;
+  border-radius: 10px 10px 0 0;
 }
 
 .ShopCardDetailsContainer {
+  display: flex;
   background-color: #fafaf5;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0 0 10px 10px
+}
+
+.ShopCardButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  align-self: flex-end;
+}
+
+.ShopCardButton:hover {
+  transform: scale(1.1);
 }
 
 /* Cart Card */

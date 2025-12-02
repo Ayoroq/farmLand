@@ -26,15 +26,17 @@ export default function ShopCard(props) {
         />
       </div>
       <div className={styles.ShopCardDetailsContainer}>
-        <h3>{props.name}</h3>
-        <p>
-          ${props.price} / <span>{props.unit}</span>
-        </p>
-        <button onClick={toggleBasket}>
+        <div className={styles.ShopCardDetails}>
+          <h3>{props.name}</h3>
+          <p>
+            ${props.price} / <span>{props.unit}</span>
+          </p>
+        </div>
+        <button onClick={toggleBasket} className={styles.ShopCardButton}>
           {basket.basket.some((item) => item.id === props.id) ? (
             <svg
-              width="20"
-              height="20"
+              width="25"
+              height="25"
               viewBox="0 0 48 48"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -49,8 +51,8 @@ export default function ShopCard(props) {
             </svg>
           ) : (
             <svg
-              width="20"
-              height="20"
+              width="25"
+              height="25"
               viewBox="0 0 48 48"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
