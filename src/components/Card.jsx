@@ -38,7 +38,7 @@ function CartCard(props) {
   function increaseQuantity() {
     basket.changeQuantity(props, props.quantity + 1);
   }
-  
+
   function decreaseQuantity() {
     if (props.quantity <= 1) {
       basket.removeFromBasket(props);
@@ -58,10 +58,12 @@ function CartCard(props) {
           />
         </div>
         <div className={styles.CartCardDetailsContainer}>
-          <h3>{props.name}</h3>
-          <p>
-            ${props.price} / <span>{props.unit}</span>
-          </p>
+          <div className={styles.subDetailsContainer}>
+            <h3>{props.name}</h3>
+            <p>
+              ${props.price} / <span>{props.unit}</span>
+            </p>
+          </div>
           <div className={styles.CartCardQuantity}>
             <p className={styles.CartCardQuantityLabel}>
               <input
@@ -127,8 +129,9 @@ function CartCard(props) {
           className={styles.CartCardRemove}
         >
           <svg
-            width="20"
-            height="20"
+            className={styles.CartCardRemoveIcon}
+            width="30"
+            height="30"
             viewBox="0 0 48 48"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
