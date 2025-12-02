@@ -26,24 +26,120 @@
 
 .CartCard {
   display: flex;
+  gap: 1rem;
   background-color: #fafaf5;
   justify-content: space-between;
   border-radius: 24px;
-  gap: 2rem;
   border: 1px solid rgb(213, 211, 211);
 }
 
-.CartCardLeft {
-  display: flex;
-  gap: 1rem;
+/* .CartCardLeft {
+  flex: 0.3 0;
+} */
+
+.CartCardImg {
+  border-radius: 24px 0 0 24px;
+  object-fit: cover;
+  height: 100%;
+  height: 150px;
+  width: 150px;
 }
 
 .CartCardRight {
+  flex: 1;
+  padding: 1rem;
+  padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.CartCardDetailsContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
+}
+
+.subDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* quantity */
+.CartCardQuantity {
+    flex: 1;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: fit-content;
+  border-radius: 24px;
+}
+
+.CartCardQuantityLabel {
+  color: black !important;
+  display: flex;
+  gap: 0.1125rem;
+  align-items: center;
+}
+
+.CartCardQuantityButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.CartCardPriceContainer{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.CartCardQuantityButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: larger;
+  background-color: white;
+  border: 1px solid rgb(213, 211, 211);
+  border-radius: 5px;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+.CartCardQuantityButton:hover {
+  transform: scale(1.1);
+}
+
+.CartCardQuantityButtonSub:hover {
+  color: red;
+}
+
+.CartCardQuantityButtonAdd:hover {
+  color: #426b1f;
+}
+
+.quantityInput {
+  text-align: center;
+  field-sizing: content;
+  border: none;
+  background: transparent;
+}
+
+.QuantityUnit {
+  font-size: medium;
+  font-weight: 400;
+}
+
+.quantityInput::-webkit-outer-spin-button,
+.quantityInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.CartCardAmountContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .CartCardRemove {
@@ -54,115 +150,30 @@
   transition: transform 0.3s ease;
 }
 
-.CartCardRemove:hover{
-    transform: scale(1.2);
+.CartCardRemove:hover {
+  transform: scale(1.2);
 }
 
-.CartCardDetailsContainer{
-    display: flex;
+@media (max-width: 620px) {
+  .CartCardImg {
+    height: 100%;
+    width: 100px;
+  }
+  .CartCardRemoveIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .CartCardRight {
     flex-direction: column;
-    gap: 0.5rem;
-    padding-bottom: 1rem;
-    flex: 1;
-    justify-content: space-between;
-}
-
-.CartCardDetailsContainer,
-.CartCardRight {
-  padding-top: 1rem;
-}
-
-.CartCardDetailsContainer p {
-  color: #426b1f;
-  font-weight: 600;
-}
-
-.CartCardImg {
-  width: 100%;
-  max-width: 150px;
-  min-height: 100px;
-  object-fit: cover;
-  height: 100%;
-  border-radius: 24px 0 0 24px;
-}
-
-.CartCardAmount {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-/* Quantity */
-.CartCardQuantity {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.CartCardQuantity {
-  background-color: white;
-  width: fit-content;
-  padding: 0.125rem 0.5rem;
-  border: 1px solid rgb(213, 211, 211);
-  border-radius: 24px;
-}
-
-.CartCardQuantityLabel {
-  color: black !important;
-  display: flex;
-  gap: 0.25rem;
-  align-items: center;
-}
-
-.CartCardQuantityButtons{
-    display: flex;
-    gap: 0.5rem;
-}
-
-.CartCardQuantityButton {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: larger;
-  padding: 0;
-  transition: transform 0.3s ease;
-}
-.CartCardQuantityButton:hover{
-    transform: scale(1.1);
-}
-
-.CartCardQuantityButtonSub:hover{
-    color: red;
-}
-
-.CartCardQuantityButtonAdd:hover{
-    color: #426b1f;
-}
-
-.quantityInput {
-  text-align: center;
-  field-sizing: content;
-  border: none;
-  background: transparent;
-}
-
-.QuantityUnit{
-    font-size: medium;
-    font-weight: 400;
-}
-
-.quantityInput::-webkit-outer-spin-button,
-.quantityInput::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-@media(max-width: 500px) {
-    .CartCardRemoveIcon{
-        width: 20px;
-        height: 20px;
-    }
-    .CartCard{
-        gap: 1rem;
-    }
+  }
+  .CartCardPrice {
+    display: none;
+  }
+  .CartCardAmountContainer {
+    flex-direction: row;
+    align-items: center;
+  }
 }
