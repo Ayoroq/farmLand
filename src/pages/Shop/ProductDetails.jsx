@@ -5,7 +5,6 @@ import { products } from "../../data/products";
 import { useContext } from "react";
 import { BasketContext } from "../../context/BasketContext";
 
-
 const ProductDetail = () => {
   const basket = useContext(BasketContext);
   const { slug } = useParams();
@@ -30,12 +29,73 @@ const ProductDetail = () => {
         </Link>
       </div>
       <div className={styles.productDetail}>
-        <img src={product.image} alt={product.name} className={styles.productImage}/>
+        <img
+          src={product.image}
+          alt={product.name}
+          className={styles.productImage}
+        />
         <div className={styles.productInfo}>
-          <h2>{product.name}</h2>
-          <p>{product.details}</p>
-          <p>${product.price} / <span>{product.unit}</span></p>
-          <button onClick={() => basket.addToBasket(product)}>Add to Basket</button>
+          <div className={styles.productInfoHeader}>
+            <div className={styles.productName}>
+              <h2>{product.name}</h2>
+              <p>
+                ${product.price} / <span>{product.unit}</span>
+              </p>
+            </div>
+            <p>{product.details}</p>
+            <p>
+              ${product.price}
+            </p>
+          </div>
+          <div>
+            <div className={styles.QuantityButtons}>
+              <button
+                className={`${styles.QuantityButton} ${styles.QuantityButtonSub}`}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="remove">
+                    <path
+                      id="Vector"
+                      d="M10 25.5V22.5H38V25.5H10Z"
+                      fill="currentcolor"
+                    />
+                  </g>
+                </svg>
+              </button>
+              <div className={styles.Quantity}>1</div>
+              <button
+                className={`${styles.QuantityButton} ${styles.QuantityButtonAdd}`}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="add">
+                    <path
+                      id="Vector"
+                      d="M22.5 42V25.5H6V22.5H22.5V6H25.5V22.5H42V25.5H25.5V42H22.5Z"
+                      fill="currentcolor"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+            <div className={styles.purchaseButtons}>
+              <button className="">Buy Now</button>
+              <button onClick={() => basket.addToBasket(product)}>
+                Add to Basket
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </main>

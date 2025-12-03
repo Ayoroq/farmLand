@@ -21,10 +21,49 @@
 
 .productInfo {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   min-width: 0;
 }
 
-@media (max-width: 750px) {
+.productInfoHeader{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.productName{
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.productName p{
+  font-size: 0.825rem;
+  padding-bottom: 3px;
+}
+
+.QuantityButtons{
+  display: flex;
+  gap: 1rem;
+}
+
+.purchaseButtons{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.purchaseButtons Button{
+  padding: 0.25rem 0;
+  border-radius: 10px;
+  border: 1px solid rgb(213, 211, 211);
+  cursor: pointer;
+
+}
+
+@media (max-width: 900px) {
   .productDetail {
     flex-direction: column;
     align-items: flex-start;
