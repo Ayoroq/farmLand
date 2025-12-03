@@ -47,7 +47,7 @@ const ProductDetail = () => {
               ${product.price}
             </p>
           </div>
-          <div>
+          <div className={styles.buttonsContainer}>
             <div className={styles.QuantityButtons}>
               <button
                 className={`${styles.QuantityButton} ${styles.QuantityButtonSub}`}
@@ -68,7 +68,14 @@ const ProductDetail = () => {
                   </g>
                 </svg>
               </button>
-              <div className={styles.Quantity}>1</div>
+              <p className={styles.CartCardQuantityLabel}>
+                              <input
+                                type="number"
+                                readOnly
+                                min={0}
+                                className={styles.quantityInput}
+                              />
+                            </p>
               <button
                 className={`${styles.QuantityButton} ${styles.QuantityButtonAdd}`}
               >
@@ -90,8 +97,8 @@ const ProductDetail = () => {
               </button>
             </div>
             <div className={styles.purchaseButtons}>
-              <button className="">Buy Now</button>
-              <button onClick={() => basket.addToBasket(product)}>
+              <button className={styles.buyNowButton}>Buy Now</button>
+              <button className={styles.addToCartButton} onClick={() => basket.addToBasket(product)}>
                 Add to Basket
               </button>
             </div>

@@ -44,9 +44,26 @@
   padding-bottom: 3px;
 }
 
+.buttonsContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .QuantityButtons{
   display: flex;
   gap: 1rem;
+}
+.QuantityButton{
+  cursor: pointer;
+}
+
+.quantityInput {
+  text-align: center;
+  field-sizing: content;
+  border: none;
+  background: transparent;
+  font-weight: bold;
 }
 
 .purchaseButtons{
@@ -61,6 +78,17 @@
   border: 1px solid rgb(213, 211, 211);
   cursor: pointer;
 
+}
+
+.buyNowButton{
+  background-color: #426b1f;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.buyNowButton:hover{
+  transform: translateY(-3px);
+  background-color: #73bc33;
 }
 
 @media (max-width: 900px) {
