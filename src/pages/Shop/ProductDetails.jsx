@@ -33,7 +33,7 @@ const ProductDetail = () => {
         <img src={product.image} alt={product.name} className={styles.productImage}/>
         <div className={styles.productInfo}>
           <h2>{product.name}</h2>
-          <p>{product.description}</p>
+          <p>{product.details}</p>
           <p>${product.price} / <span>{product.unit}</span></p>
           <button onClick={() => basket.addToBasket(product)}>Add to Basket</button>
         </div>
