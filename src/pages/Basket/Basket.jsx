@@ -1,9 +1,11 @@
 import styles from "./Basket.module.css";
-import { useContext } from "react";
+import { useContext, } from "react";
 import { BasketContext } from "../../context/BasketContext.jsx";
 import { CartCard } from "../../components/Card.jsx";
+import { useNavigate } from "react-router";
 
 export default function Basket() {
+  const navigate = useNavigate();
   const basket = useContext(BasketContext);
   const totalItems = basket.getTotalItems();
   const taxAmount = basket.getTax().toFixed(2);
@@ -22,7 +24,7 @@ export default function Basket() {
         {!totalItems && (
           <div className={styles.basketEmpty}>
             <h2>Your basket is empty</h2>
-            <p>Start adding items to your basket</p>
+            <button onClick={() => navigate("/shop")}>Shop Now</button>
           </div>
         )}
         {totalItems > 0 && (
