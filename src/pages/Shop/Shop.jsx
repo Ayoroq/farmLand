@@ -116,6 +116,7 @@ export default function Shop() {
             className={styles.filterDropdown}
             ref={filterAndSort}
             onClick={hideAndShowDropdown}
+            aria-label="Filter & Sort"
           >
             <p className={styles.filterSortDropdownText}>Filter & Sort</p>
             <svg
@@ -322,6 +323,7 @@ export default function Shop() {
               <button
                 className={styles.sortControlsButton}
                 onClick={() => setSorted(null)}
+                aria-label="Remove Sort"
               >
                 <svg
                   width="10"
@@ -361,6 +363,7 @@ export default function Shop() {
                   key={filter}
                   className={`${styles.filterControlButton}`}
                   onClick={() => toggleFilter(filter)}
+                  aria-label={`Remove ${filter} Filter`}
                 >
                   {filter}
                   <svg

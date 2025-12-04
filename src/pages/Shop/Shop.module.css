@@ -69,7 +69,7 @@
   overflow: hidden;
   transform-origin: top;
   transition: max-height 0.6s cubic-bezier(0.86, 0, 0.07, 1),
-  padding 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+    padding 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
 
 .sort {
@@ -84,7 +84,8 @@
   gap: 0.5rem;
 }
 
-.sortDropdownButton, .filterOptionButton {
+.sortDropdownButton,
+.filterOptionButton {
   border: none;
   background: none;
   display: flex;
@@ -96,7 +97,8 @@
   border-radius: 3px;
 }
 
-.sortDropdownButton:hover, .filterOptionButton:hover  {
+.sortDropdownButton:hover,
+.filterOptionButton:hover {
   background-color: aliceblue;
 }
 
@@ -124,75 +126,78 @@
   max-height: 600px;
 }
 
-.closeDropDownContainer{
-    display: flex;
-    justify-content: center;
+.closeDropDownContainer {
+  display: flex;
+  justify-content: center;
 }
 
-.closeDropDown{
-    composes: basketBtn from "../../components/Navbar.module.css";
+.closeDropDown {
+  composes: basketBtn from "../../components/Navbar.module.css";
 }
 /* controls */
-.filterAndSortControls{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.filterAndSortControls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.filterControls, .sortControls{
-    display: flex;
-    gap: 0.5rem;
+.filterControls,
+.sortControls {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.filterControlButton, .sortControlsButton{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: #c3f4ab;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3 ease;
-    border-radius: 3px;
+.filterControlButton,
+.sortControlsButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #c3f4ab;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3 ease;
+  border-radius: 3px;
 }
 
-.filterActive{
-    background-color: #426b1f;
-    color: white;
+.filterActive {
+  background-color: #426b1f;
+  color: white;
 }
-.filterActive:hover{
-    background-color: #f4abab;
+.filterActive:hover {
+  background-color: #f4abab;
 }
 
-.sortControlsButton:hover, .filterControlButton:hover{
-    background-color: #f4abab;
-    color: white;
+.sortControlsButton:hover,
+.filterControlButton:hover {
+  background-color: #f4abab;
+  color: white;
 }
 
 /* Search */
-.searchInput{
-    border: none;
-    border-bottom: 1px solid rgb(213, 211, 211);
+.searchInput {
+  border: none;
+  border-bottom: 1px solid rgb(213, 211, 211);
 }
 
-.noResults{
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
+.noResults {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (max-width: 620px){
-    .filterSortDropdownText{
-        display: none;
-    }
-    .filterAndSort{
-        width: 250px;
-        top: 240%;
-    }
-    .shopSection{
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    }
-  .headerleft{
+@media (max-width: 620px) {
+  .filterSortDropdownText {
+    display: none;
+  }
+  .filterAndSort {
+    width: 250px;
+    top: 240%;
+  }
+  .shopSection {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .headerleft {
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
