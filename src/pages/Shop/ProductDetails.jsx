@@ -1,60 +1,60 @@
 import { Link } from "react-router";
 import styles from "./ProductDetails.module.css";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { products } from "../../data/products";
-import { useContext,useState, useEffect} from "react";
+import { useContext, useState, useEffect } from "react";
 import { BasketContext } from "../../context/BasketContext";
 
 const ProductDetail = () => {
   const basket = useContext(BasketContext);
+  const Navigate = useNavigate();
   const { slug } = useParams();
   const product = products.find((product) => product.slug === slug);
-  const [productPrice, setProductPrice] = useState(product.price)
-  const [productQuantity, setProductQuantity] = useState(1)
+  const [localQuantity, setLocalQuantity] = useState(1);
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
-  const quantity = basket.basket.find((item) => item.id === product.id)?.quantity;
-  const item = basket.basket.find((item) => item.id === product.id);
-
-  useEffect(() => {
-    if(item){
-      setProductPrice(item.price * item.quantity)
-    }
-  }, [item, item?.price, item?.quantity]);
-
-  function toggleBasket() {
-    if (basket.basket.some((item) => item.id === product.id)) {
-      basket.removeFromBasket(product);
-      setProductPrice(product.price)
-      setProductQuantity(1)
-    } else {
-      basket.addToBasket(product);
-      basket.changeQuantity(product, productQuantity)
-    }
-  }
+  const basketItem = basket.basket.find((item) => item.id === product.id);
+  const currentQuantity = basketItem?.quantity || localQuantity;
+  const currentPrice = product.price * currentQuantity;
 
   function incrementQuantity() {
-    if (item) {
-      basket.changeQuantity(product, quantity + 1);
+    if (basketItem) {
+      basket.changeQuantity(product, basketItem.quantity + 1);
+    } else {
+      setLocalQuantity(prev => prev + 1);
     }
-    setProductQuantity(prev => prev + 1)
-    setProductPrice(prev => prev + product.price)
   }
 
   function decrementQuantity() {
-    if (item) {
-      if (quantity <= 1) {
+    if (basketItem) {
+      if (basketItem.quantity <= 1) {
         basket.removeFromBasket(product);
       } else {
-        basket.changeQuantity(product, quantity - 1);
+        basket.changeQuantity(product, basketItem.quantity - 1);
+      }
+    } else {
+      if (localQuantity > 1) {
+        setLocalQuantity(prev => prev - 1);
       }
     }
-    if(productQuantity <= 1) return (setProductQuantity(1), setProductPrice(product.price))
-    setProductQuantity(prev => prev - 1)
-    setProductPrice(prev => prev - product.price)
+  }
+
+  function toggleBasket() {
+    if (basketItem) {
+      basket.removeFromBasket(product);
+    } else {
+      basket.addToBasket(product, localQuantity);
+    }
+  }
+
+  function buyNow() {
+    if (!basketItem) {
+      basket.addToBasket(product, localQuantity);
+    }
+    Navigate("/basket");
   }
 
   return (
@@ -91,7 +91,7 @@ const ProductDetail = () => {
               </p>
             </div>
             <p>{product.details}</p>
-            <p>${productPrice.toFixed(2)}</p>
+            <p>${currentPrice.toFixed(2)}</p>
           </div>
           <div className={styles.buttonsContainer}>
             <div className={styles.QuantityButtons}>
@@ -121,7 +121,7 @@ const ProductDetail = () => {
                   readOnly
                   min={0}
                   className={styles.quantityInput}
-                  value={quantity || productQuantity}
+                  value={currentQuantity}
                 />
               </p>
               <button
@@ -146,11 +146,10 @@ const ProductDetail = () => {
               </button>
             </div>
             <div className={styles.purchaseButtons}>
-              <button className={styles.buyNowButton}>Buy Now</button>
-              <button
-                className={styles.addToCartButton}
-                onClick={toggleBasket}
-              >
+              <button className={styles.buyNowButton} onClick={buyNow}>
+                Buy Now
+              </button>
+              <button className={styles.addToCartButton} onClick={toggleBasket}>
                 {basket.basket.some((item) => item.id === product.id)
                   ? "Remove from Cart"
                   : "Add to Cart"}
