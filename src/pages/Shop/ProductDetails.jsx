@@ -112,6 +112,7 @@ const ProductDetail = () => {
               <button
                 className={`${styles.QuantityButton} ${styles.QuantityButtonSub}`}
                 onClick={decrementQuantity}
+                aria-label="decreaseQuantity"
               >
                 <svg
                   width="20"
@@ -141,6 +142,7 @@ const ProductDetail = () => {
               <button
                 className={`${styles.QuantityButton} ${styles.QuantityButtonAdd}`}
                 onClick={incrementQuantity}
+                aria-label="addQuantity"
               >
                 <svg
                   width="20"
