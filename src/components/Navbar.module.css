@@ -160,3 +160,13 @@ a:hover:not(.logo):not(.basketBtn) {
 .sideBarNav a {
   font-size: clamp(1.5rem, 4vw, 28px);
 }
+
+.basketBtnMobile{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.basketCountMobile{
+  font-size: 1.25rem;
+}

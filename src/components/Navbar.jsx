@@ -1,9 +1,12 @@
 import { Link } from "react-router";
 import { useState, useEffect, useRef, forwardRef } from "react";
+import { useContext } from "react";
+import { BasketContext } from "../context/BasketContext";
 import style from "./Navbar.module.css";
 import Sidebar from "./Sidebar.jsx";
 
 const Navbar = forwardRef((props, ref) => {
+  const basket = useContext(BasketContext);
   const [screenWidth, setScreenWidth] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const sideBarRef = useRef(null);
@@ -133,6 +136,11 @@ const Navbar = forwardRef((props, ref) => {
                 src="/src/assets/NavbarAssets/Shopping Basket Icon.svg"
                 alt="shopping basket"
               />
+              {basket.getTotalItems() > 0 && (
+                <span className={style.basketCountMobile}>
+                  {basket.getTotalItems()}
+                </span>
+              )}
             </Link>
           </ul>
         ) : (
@@ -157,7 +165,11 @@ const Navbar = forwardRef((props, ref) => {
               </li>
               <li className={`${style.basketBtnContainer} ${style.navItem}`}>
                 <Link to="/basket" className={style.basketBtn}>
-                  Basket
+                  Basket {basket.getTotalItems() > 0 && (
+                    <span className={style.basketCount}>
+                      {basket.getTotalItems()}
+                    </span>
+                  )}
                 </Link>
               </li>
             </ul>
