@@ -89,13 +89,13 @@ function CartCard(props) {
 
   return (
     <div className={styles.CartCard}>
-      <div className={styles.CartCardLeft}>
+      <Link to={`/shop/${props.slug}`} className={styles.CartCardLeft}>
         <img
           src={props.image}
           alt={props.description}
           className={styles.CartCardImg}
         />
-      </div>
+      </Link>
       <div className={styles.CartCardRight}>
         <div className={styles.CartCardDetailsContainer}>
           <h3>{props.name}</h3>

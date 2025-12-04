@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import styles from "./ProductDetails.module.css";
 import { useParams } from "react-router";
 import { products } from "../../data/products";
-import { useContext,useState} from "react";
+import { useContext,useState, useEffect} from "react";
 import { BasketContext } from "../../context/BasketContext";
 
 const ProductDetail = () => {
@@ -19,11 +19,20 @@ const ProductDetail = () => {
   const quantity = basket.basket.find((item) => item.id === product.id)?.quantity;
   const item = basket.basket.find((item) => item.id === product.id);
 
+  useEffect(() => {
+    if(item){
+      setProductPrice(item.price * item.quantity)
+    }
+  }, [item, item?.price, item?.quantity]);
+
   function toggleBasket() {
     if (basket.basket.some((item) => item.id === product.id)) {
       basket.removeFromBasket(product);
+      setProductPrice(product.price)
+      setProductQuantity(1)
     } else {
       basket.addToBasket(product);
+      basket.changeQuantity(product, productQuantity)
     }
   }
 
@@ -140,9 +149,11 @@ const ProductDetail = () => {
               <button className={styles.buyNowButton}>Buy Now</button>
               <button
                 className={styles.addToCartButton}
-                onClick={() => basket.addToBasket(product)}
+                onClick={toggleBasket}
               >
-                Add to Basket
+                {basket.basket.some((item) => item.id === product.id)
+                  ? "Remove from Cart"
+                  : "Add to Cart"}
               </button>
             </div>
           </div>
