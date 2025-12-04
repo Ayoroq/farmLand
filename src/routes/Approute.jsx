@@ -5,11 +5,17 @@ import Shop from "../pages/Shop/Shop.jsx";
 import About from "../pages/About/About.jsx";
 import Contact from "../pages/Contact/Contact.jsx";
 import ProductDetail from "../pages/Shop/ProductDetails.jsx";
+import NotFound from "../pages/NotFound/NotFound.jsx";
+import ErrorBoundary from "../components/ErrorBoundary.jsx";
 
 const routes = [
   {
     path: "/",
-    element: <App />,
+    element: (
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    ),
     children: [
       {
         index: true,
@@ -34,6 +40,10 @@ const routes = [
       {
         path: "shop/:slug",
         element: <ProductDetail />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

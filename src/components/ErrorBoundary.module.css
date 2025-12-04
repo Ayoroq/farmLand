@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+
+.content {
+  text-align: center;
+  max-width: 500px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.message {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.refreshButton {
+  padding: 12px 24px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.refreshButton:hover {
+  background-color: #2980b9;
+}

@@ -2,32 +2,38 @@ import { Link } from "react-router";
 import styles from "./ProductDetails.module.css";
 import { useParams, useNavigate } from "react-router";
 import { products } from "../../data/products";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { BasketContext } from "../../context/BasketContext";
+import Loading from "../../components/Loading";
+import NotFound from "../NotFound/NotFound";
 
 const ProductDetail = () => {
   const basket = useContext(BasketContext);
   const Navigate = useNavigate();
   const { slug } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [localQuantity, setLocalQuantity] = useState(1);
+
   const product = products.find(
     (product) => product.slug === slug.toLowerCase()
   );
-  const [localQuantity, setLocalQuantity] = useState(1);
 
-  if (!product) {
+  useEffect(() => {
+    // Simulate loading time for better UX
+    const timer = setTimeout(() => setLoading(false), 300);
+    return () => clearTimeout(timer);
+  }, [slug]);
+
+  if (loading) {
     return (
       <main className={styles.productDetailMain}>
-        <div className={styles.notFoundContainer}>
-          <p>Product not found</p>
-          <button
-            className={styles.notFoundButton}
-            onClick={() => Navigate("/shop")}
-          >
-            Go back to shop
-          </button>
-        </div>
+        <Loading text="Loading product..." />
       </main>
     );
+  }
+
+  if (!product) {
+    return <NotFound />;
   }
 
   const basketItem = basket.basket.find((item) => item.id === product.id);
