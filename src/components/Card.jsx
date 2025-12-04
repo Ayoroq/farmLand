@@ -1,10 +1,11 @@
 import styles from "./Card.module.css";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useContext } from "react";
 import { BasketContext } from "../context/BasketContext";
 
 export default function ShopCard(props) {
   const basket = useContext(BasketContext);
+  const Navigate = useNavigate();
 
   const toggleBasket = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ export default function ShopCard(props) {
   };
 
   return (
-    <Link to={`/shop/${props.slug}`} className={styles.ShopCard}>
+    <div className={styles.ShopCard} onClick={() => Navigate(`/shop/${props.slug}`)}>
       <div className={styles.ShopCardImgContainer}>
         <img
           src={props.image}
@@ -68,7 +69,7 @@ export default function ShopCard(props) {
           )}
         </button>
       </div>
-    </Link>
+    </div>
   );
 }
 
