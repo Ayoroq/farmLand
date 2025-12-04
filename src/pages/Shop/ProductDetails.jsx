@@ -2,13 +2,52 @@ import { Link } from "react-router";
 import styles from "./ProductDetails.module.css";
 import { useParams } from "react-router";
 import { products } from "../../data/products";
-import { useContext } from "react";
+import { useContext,useState} from "react";
 import { BasketContext } from "../../context/BasketContext";
 
 const ProductDetail = () => {
   const basket = useContext(BasketContext);
   const { slug } = useParams();
   const product = products.find((product) => product.slug === slug);
+  const [productPrice, setProductPrice] = useState(product.price)
+  const [productQuantity, setProductQuantity] = useState(1)
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
+  const quantity = basket.basket.find((item) => item.id === product.id)?.quantity;
+  const item = basket.basket.find((item) => item.id === product.id);
+
+  function toggleBasket() {
+    if (basket.basket.some((item) => item.id === product.id)) {
+      basket.removeFromBasket(product);
+    } else {
+      basket.addToBasket(product);
+    }
+  }
+
+  function incrementQuantity() {
+    if (item) {
+      basket.changeQuantity(product, quantity + 1);
+    }
+    setProductQuantity(prev => prev + 1)
+    setProductPrice(prev => prev + product.price)
+  }
+
+  function decrementQuantity() {
+    if (item) {
+      if (quantity <= 1) {
+        basket.removeFromBasket(product);
+      } else {
+        basket.changeQuantity(product, quantity - 1);
+      }
+    }
+    if(productQuantity <= 1) return (setProductQuantity(1), setProductPrice(product.price))
+    setProductQuantity(prev => prev - 1)
+    setProductPrice(prev => prev - product.price)
+  }
+
   return (
     <main className={styles.productDetailMain}>
       <div className={styles.backContaine}>
@@ -43,14 +82,13 @@ const ProductDetail = () => {
               </p>
             </div>
             <p>{product.details}</p>
-            <p>
-              ${product.price}
-            </p>
+            <p>${productPrice.toFixed(2)}</p>
           </div>
           <div className={styles.buttonsContainer}>
             <div className={styles.QuantityButtons}>
               <button
                 className={`${styles.QuantityButton} ${styles.QuantityButtonSub}`}
+                onClick={decrementQuantity}
               >
                 <svg
                   width="20"
@@ -69,15 +107,17 @@ const ProductDetail = () => {
                 </svg>
               </button>
               <p className={styles.CartCardQuantityLabel}>
-                              <input
-                                type="number"
-                                readOnly
-                                min={0}
-                                className={styles.quantityInput}
-                              />
-                            </p>
+                <input
+                  type="number"
+                  readOnly
+                  min={0}
+                  className={styles.quantityInput}
+                  value={quantity || productQuantity}
+                />
+              </p>
               <button
                 className={`${styles.QuantityButton} ${styles.QuantityButtonAdd}`}
+                onClick={incrementQuantity}
               >
                 <svg
                   width="20"
@@ -98,7 +138,10 @@ const ProductDetail = () => {
             </div>
             <div className={styles.purchaseButtons}>
               <button className={styles.buyNowButton}>Buy Now</button>
-              <button className={styles.addToCartButton} onClick={() => basket.addToBasket(product)}>
+              <button
+                className={styles.addToCartButton}
+                onClick={() => basket.addToBasket(product)}
+              >
                 Add to Basket
               </button>
             </div>
