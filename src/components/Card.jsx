@@ -5,7 +5,7 @@ import { BasketContext } from "../context/BasketContext";
 
 export default function ShopCard(props) {
   const basket = useContext(BasketContext);
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const toggleBasket = (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ export default function ShopCard(props) {
   };
 
   return (
-    <div className={styles.ShopCard} onClick={() => Navigate(`/shop/${props.slug}`)}>
+    <div className={styles.ShopCard} onClick={() => navigate(`/shop/${props.slug}`)} data-testid="shopCard">
       <div className={styles.ShopCardImgContainer}>
         <img
           src={props.image}
@@ -33,7 +33,7 @@ export default function ShopCard(props) {
             ${props.price} / <span>{props.unit}</span>
           </p>
         </div>
-        <button onClick={toggleBasket} className={styles.ShopCardButton}>
+        <button onClick={toggleBasket} className={styles.ShopCardButton} role="toggleBasket">
           {basket.basket.some((item) => item.id === props.id) ? (
             <svg
               width="25"
@@ -118,6 +118,7 @@ function CartCard(props) {
               <div className={styles.CartCardQuantityButtons}>
                 <button
                   onClick={decreaseQuantity}
+                  aria-label="decreaseQuantity"
                   className={`${styles.CartCardQuantityButton} ${styles.CartCardQuantityButtonSub}`}
                 >
                   <svg
@@ -138,6 +139,7 @@ function CartCard(props) {
                 </button>
                 <button
                   onClick={increaseQuantity}
+                  aria-label="increaseQuantity"
                   className={`${styles.CartCardQuantityButton} ${styles.CartCardQuantityButtonAdd}`}
                 >
                   <svg
@@ -167,6 +169,7 @@ function CartCard(props) {
           <button
             onClick={() => basket.removeFromBasket(props)}
             className={styles.CartCardRemove}
+            aria-label="removeFromBasket"
           >
             <svg
               className={styles.CartCardRemoveIcon}
