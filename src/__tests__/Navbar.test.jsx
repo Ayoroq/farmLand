@@ -5,12 +5,15 @@ import Navbar from "../components/Navbar.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 import userEvent from "@testing-library/user-event";
 import sidebarStyles from "../components/Navbar.module.css";
+import BasketProvider from "../context/BasketContext.jsx";
 
 describe("Navbar Component", () => {
   it("renders the Navbar with the correct title", () => {
     render(
       <BrowserRouter>
-        <Navbar />
+        <BasketProvider>
+          <Navbar />
+        </BasketProvider>
       </BrowserRouter>
     );
     const titleElement = screen.getByText(/FarmLand/i);
@@ -19,7 +22,9 @@ describe("Navbar Component", () => {
   it("renders the Navbar with the correct links", () => {
     render(
       <BrowserRouter>
-        <Navbar />
+        <BasketProvider>
+          <Navbar />
+        </BasketProvider>
       </BrowserRouter>
     );
     const shopLinks = screen.getAllByText(/Shop/i);
@@ -37,7 +42,9 @@ describe("Navigation Links", () => {
   it("has correct href attributes for navigation links", () => {
     render(
       <BrowserRouter>
+        <BasketProvider>
         <Navbar />
+        </BasketProvider>
       </BrowserRouter>
     );
 
@@ -65,7 +72,9 @@ describe("Navbar Mobile Component", () => {
   it("renders the Navbar with the correct title on mobile", () => {
     render(
       <BrowserRouter>
+        <BasketProvider>
         <Navbar />
+        </BasketProvider>
       </BrowserRouter>
     );
     const titleElement = screen.getByText(/FarmLand/i);
@@ -75,7 +84,9 @@ describe("Navbar Mobile Component", () => {
   it("renders the Navbar with the basket icon on mobile", () => {
     render(
       <BrowserRouter>
+        <BasketProvider>
         <Navbar />
+        </BasketProvider>
       </BrowserRouter>
     );
     const basketIcon = screen.getByAltText(/shopping basket/i);
@@ -85,7 +96,9 @@ describe("Navbar Mobile Component", () => {
   it("renders the menu button on mobile", () => {
     render(
       <BrowserRouter>
+        <BasketProvider>
         <Navbar />
+        </BasketProvider>
       </BrowserRouter>
     );
     const menuButton = screen.getByRole("button", {
@@ -126,7 +139,9 @@ describe("Navbar and Sidebar Integration", () => {
   it("shows the Sidebar when the menu button is clicked", async () => {
     render(
       <BrowserRouter>
+        <BasketProvider>
         <Navbar />
+        </BasketProvider>
       </BrowserRouter>
     );
     const user = userEvent.setup();
@@ -144,8 +159,10 @@ describe("Navbar and Sidebar Integration", () => {
   });
   it("hides the Sidebar when the close button is clicked", async () => {
     render(
-      <BrowserRouter>
+            <BrowserRouter>
+        <BasketProvider>
         <Navbar />
+        </BasketProvider>
       </BrowserRouter>
     );
     const user = userEvent.setup();
