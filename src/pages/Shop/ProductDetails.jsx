@@ -2,18 +2,32 @@ import { Link } from "react-router";
 import styles from "./ProductDetails.module.css";
 import { useParams, useNavigate } from "react-router";
 import { products } from "../../data/products";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { BasketContext } from "../../context/BasketContext";
 
 const ProductDetail = () => {
   const basket = useContext(BasketContext);
   const Navigate = useNavigate();
   const { slug } = useParams();
-  const product = products.find((product) => product.slug === slug);
+  const product = products.find(
+    (product) => product.slug === slug.toLowerCase()
+  );
   const [localQuantity, setLocalQuantity] = useState(1);
 
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+      <main className={styles.productDetailMain}>
+        <div className={styles.notFoundContainer}>
+          <p>Product not found</p>
+          <button
+            className={styles.notFoundButton}
+            onClick={() => Navigate("/shop")}
+          >
+            Go back to shop
+          </button>
+        </div>
+      </main>
+    );
   }
 
   const basketItem = basket.basket.find((item) => item.id === product.id);
@@ -24,7 +38,7 @@ const ProductDetail = () => {
     if (basketItem) {
       basket.changeQuantity(product, basketItem.quantity + 1);
     } else {
-      setLocalQuantity(prev => prev + 1);
+      setLocalQuantity((prev) => prev + 1);
     }
   }
 
@@ -37,7 +51,7 @@ const ProductDetail = () => {
       }
     } else {
       if (localQuantity > 1) {
-        setLocalQuantity(prev => prev - 1);
+        setLocalQuantity((prev) => prev - 1);
       }
     }
   }

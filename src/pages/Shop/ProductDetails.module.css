@@ -27,34 +27,34 @@
   min-width: 0;
 }
 
-.productInfoHeader{
+.productInfoHeader {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.productName{
+.productName {
   display: flex;
   align-items: flex-end;
   gap: 1rem;
 }
 
-.productName p{
+.productName p {
   font-size: 0.825rem;
   padding-bottom: 3px;
 }
 
-.buttonsContainer{
+.buttonsContainer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.QuantityButtons{
+.QuantityButtons {
   display: flex;
   gap: 1rem;
 }
-.QuantityButton{
+.QuantityButton {
   cursor: pointer;
 }
 
@@ -66,29 +66,52 @@
   font-weight: bold;
 }
 
-.purchaseButtons{
+.purchaseButtons {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.purchaseButtons Button{
+.purchaseButtons Button {
   padding: 0.25rem 0;
   border-radius: 10px;
   border: 1px solid rgb(213, 211, 211);
   cursor: pointer;
-
 }
 
-.buyNowButton{
+.buyNowButton {
   background-color: #426b1f;
   color: white;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.buyNowButton:hover{
+.buyNowButton:hover, .notFoundButton:hover {
   transform: translateY(-3px);
   background-color: #73bc33;
+}
+
+/* Not found */
+
+.notFoundContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.notFoundContainer p{
+  font-size: clamp(8vw,10vw, 90px)
+}
+
+.notFoundContainer button{
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #426b1f;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 @media (max-width: 900px) {
