@@ -46,14 +46,6 @@
   gap: 2rem;
 }
 
-.basketEmpty {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 /* CheckOut */
 .basketCheckout {
   display: flex;
@@ -79,7 +71,7 @@
   justify-content: space-between;
 }
 
-.checkOutButton {
+.checkOutButton, .basketEmptyButton {
   background: #426b1f;
   border-radius: 8px;
   border: none;
@@ -92,9 +84,20 @@
   transition: background-color 0.3s ease, transform 0.3s ease-in-out;
 }
 
-.checkOutButton:hover{
+.checkOutButton:hover, .basketEmptyButton:hover{
     background-color: #73bc33;
     transform: translateY(-3px);
+}
+
+/* basket empty */
+
+.basketEmpty {
+  gap: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .checkOutButton:active{

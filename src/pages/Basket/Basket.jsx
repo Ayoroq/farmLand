@@ -24,7 +24,7 @@ export default function Basket() {
         {!totalItems && (
           <div className={styles.basketEmpty}>
             <h2>Your basket is empty</h2>
-            <button onClick={() => navigate("/shop")}>Shop Now</button>
+            <button className={styles.basketEmptyButton} onClick={() => navigate("/shop")}>Shop Now</button>
           </div>
         )}
         {totalItems > 0 && (
