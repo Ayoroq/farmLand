@@ -2,7 +2,6 @@ import styles from "./Shop.module.css";
 import { useState, useRef, useEffect } from "react";
 import ShopCard from "../../components/Card";
 import { products } from "../../data/products";
-import Loading from "../../components/Loading";
 
 export default function Shop() {
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -10,16 +9,9 @@ export default function Shop() {
   const [filterAndSortDropdownIsActive, setfilterAndSortDropdownIsActive] =
     useState(false);
   const [sorted, setSorted] = useState(null);
-  const [loading, setLoading] = useState(true);
   const filterAndSort = useRef(null);
   const dropDown = useRef(null);
   const [inputValue, setInputValue] = useState('')
-
-  useEffect(() => {
-    // Simulate initial loading
-    const timer = setTimeout(() => setLoading(false), 500);
-    return () => clearTimeout(timer);
-  }, []);
 
   function hideAndShowDropdown() {
     setfilterAndSortDropdownIsActive(!filterAndSortDropdownIsActive);
@@ -88,14 +80,6 @@ export default function Shop() {
     );
 
     setFilteredProducts(result);
-  }
-
-  if (loading) {
-    return (
-      <main className={styles.shop}>
-        <Loading text="Loading products..." />
-      </main>
-    );
   }
 
   if (inputValue.trim() !== '' && filteredProducts.length === 0) {

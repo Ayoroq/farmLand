@@ -2,35 +2,20 @@ import { Link } from "react-router";
 import styles from "./ProductDetails.module.css";
 import { useParams, useNavigate } from "react-router";
 import { products } from "../../data/products";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { BasketContext } from "../../context/BasketContext";
-import Loading from "../../components/Loading";
 import NotFound from "../NotFound/NotFound";
+import ImageWithLoading from "../../components/ImageWithLoading";
 
 const ProductDetail = () => {
   const basket = useContext(BasketContext);
   const Navigate = useNavigate();
   const { slug } = useParams();
-  const [loading, setLoading] = useState(true);
   const [localQuantity, setLocalQuantity] = useState(1);
 
   const product = products.find(
     (product) => product.slug === slug.toLowerCase()
   );
-
-  useEffect(() => {
-    // Simulate loading time for better UX
-    const timer = setTimeout(() => setLoading(false), 300);
-    return () => clearTimeout(timer);
-  }, [slug]);
-
-  if (loading) {
-    return (
-      <main className={styles.productDetailMain}>
-        <Loading text="Loading product..." />
-      </main>
-    );
-  }
 
   if (!product) {
     return <NotFound />;
@@ -97,7 +82,7 @@ const ProductDetail = () => {
         </Link>
       </div>
       <div className={styles.productDetail}>
-        <img
+        <ImageWithLoading
           src={product.image}
           alt={product.name}
           className={styles.productImage}

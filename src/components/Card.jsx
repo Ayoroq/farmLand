@@ -2,6 +2,7 @@ import styles from "./Card.module.css";
 import { Link, useNavigate } from "react-router";
 import { useContext } from "react";
 import { BasketContext } from "../context/BasketContext";
+import ImageWithLoading from "./ImageWithLoading";
 
 export default function ShopCard(props) {
   const basket = useContext(BasketContext);
@@ -20,7 +21,7 @@ export default function ShopCard(props) {
   return (
     <div className={styles.ShopCard} onClick={() => navigate(`/shop/${props.slug}`)} data-testid="shopCard">
       <div className={styles.ShopCardImgContainer}>
-        <img
+        <ImageWithLoading
           src={props.image}
           alt={props.description}
           className={styles.ShopCardImg}
@@ -92,7 +93,7 @@ function CartCard(props) {
   return (
     <div className={styles.CartCard}>
       <Link to={`/shop/${props.slug}`} className={styles.CartCardLeft}>
-        <img
+        <ImageWithLoading
           src={props.image}
           alt={props.description}
           className={styles.CartCardImg}
