@@ -26,6 +26,11 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  justify-content: center;
+}
+
+.video{
+
 }
 
 .shopButton {
@@ -93,5 +98,8 @@
 @media (width < 620px) {
   .info {
     flex-direction: column;
+  }
+  .subSection{
+    align-items: flex-start;
   }
 }
