@@ -57,7 +57,6 @@ export default function Home() {
               autoPlay
               muted
               loop
-              type="video/mp4"
             ></video>
 
             <div className={styles.info}>
