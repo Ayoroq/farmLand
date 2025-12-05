@@ -61,9 +61,9 @@
 
 .quantityInput {
   text-align: center;
-  field-sizing: content;
-  border: none;
   background: transparent;
+  width: min-content;
+  border: none;
   font-weight: bold;
 }
 

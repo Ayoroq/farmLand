@@ -130,9 +130,10 @@ const ProductDetail = () => {
               </button>
               <p className={styles.CartCardQuantityLabel}>
                 <input
-                  type="number"
+                  type="text"
                   readOnly
                   min={0}
+                  size={currentQuantity.toString().length}
                   className={styles.quantityInput}
                   value={currentQuantity}
                 />
