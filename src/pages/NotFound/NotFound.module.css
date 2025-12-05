@@ -14,7 +14,7 @@
 .title {
   font-size: 6rem;
   font-weight: bold;
-  color: #e74c3c;
+  color: #f71900;
   margin: 0;
 }
 
@@ -33,15 +33,19 @@
 
 .homeLink {
   display: inline-block;
+  cursor: pointer;
   padding: 12px 24px;
-  background-color: #27ae60;
+  background-color: #426b1f;
   color: white;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .homeLink:hover {
-  background-color: #219a52;
+  background-color: #73bc33;
+  transform: translateY(-3px);
+  color: white;
 }

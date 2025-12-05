@@ -1,7 +1,9 @@
 import { Link } from 'react-router';
 import styles from './NotFound.module.css';
+import { useNavigate } from 'react-router';
 
 const NotFound = () => {
+  const navigate = useNavigate()
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -10,9 +12,9 @@ const NotFound = () => {
         <p className={styles.message}>
           The page you're looking for doesn't exist or has been moved.
         </p>
-        <Link to="/shop" className={styles.homeLink}>
+        <button onClick={() => navigate("/shop")} className={styles.homeLink}>
           Back to Shop
-        </Link>
+        </button>
       </div>
     </div>
   );
