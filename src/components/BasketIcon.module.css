@@ -1,0 +1,24 @@
+.basketIconContainer{
+    position: relative;
+    cursor: pointer;
+}
+
+.button{
+    cursor: pointer;
+}
+
+.basketCount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    position: absolute;
+    font-size: 0.75rem;
+    width: 15px;
+    height: 15px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: yellow;
+    top: 0;
+    right: -5px;
+}

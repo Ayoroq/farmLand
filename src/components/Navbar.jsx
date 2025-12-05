@@ -136,7 +136,7 @@ const Navbar = forwardRef((props, ref) => {
                 FarmLand
               </Link>
             </li>
-            <BasketIcon inCart={basket.getTotalItems() > 0} width={24} height={24} handleClick={handleCartClick} />
+            <BasketIcon inCart={basket.getTotalItems() > 0} width={24} height={24} handleClick={handleCartClick} isNav={true}/>
           </ul>
         ) : (
           // Desktop layout
@@ -159,7 +159,7 @@ const Navbar = forwardRef((props, ref) => {
                 <Link to="/contact">Find Us</Link>
               </li>
               <li className={`${style.basketBtnContainer} ${style.navItem}`}>
-                <BasketIcon inCart={basket.getTotalItems() > 0} width={30} height={30} handleClick={handleCartClick} />
+                <BasketIcon inCart={basket.getTotalItems() > 0} width={30} height={30} handleClick={handleCartClick} isNav={true} />
               </li>
             </ul>
           </>
