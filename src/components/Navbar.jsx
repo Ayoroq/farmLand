@@ -19,6 +19,11 @@ const Navbar = forwardRef((props, ref) => {
     setScreenWidth(window.innerWidth);
   }, []);
 
+  //Handle navigation to cart
+  function handleCartClick() {
+    navigate("/basket");
+  }
+
   // Handle window resize events
   useEffect(() => {
     const handleResize = () => {
@@ -131,7 +136,7 @@ const Navbar = forwardRef((props, ref) => {
                 FarmLand
               </Link>
             </li>
-            <BasketIcon inCart={basket.getTotalItems() > 0} width={24} height={24} />
+            <BasketIcon inCart={basket.getTotalItems() > 0} width={24} height={24} handleClick={handleCartClick} />
           </ul>
         ) : (
           // Desktop layout
@@ -154,7 +159,7 @@ const Navbar = forwardRef((props, ref) => {
                 <Link to="/contact">Find Us</Link>
               </li>
               <li className={`${style.basketBtnContainer} ${style.navItem}`}>
-                <BasketIcon inCart={basket.getTotalItems() > 0} width={30} height={30} />
+                <BasketIcon inCart={basket.getTotalItems() > 0} width={30} height={30} handleClick={handleCartClick} />
               </li>
             </ul>
           </>

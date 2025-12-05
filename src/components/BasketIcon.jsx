@@ -1,4 +1,5 @@
-export default function BasketIcon({ inCart, width = 30, height = 30 }){
+import { useNavigate } from "react-router";
+export default function BasketIcon({ inCart, width = 30, height = 30, handleClick}){
   if (inCart) {
     return (
       <svg
@@ -8,6 +9,7 @@ export default function BasketIcon({ inCart, width = 30, height = 30 }){
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         data-testid="in-cart"
+        onClick={handleClick}
       >
         <g id="in-cart">
           <path
@@ -27,6 +29,8 @@ export default function BasketIcon({ inCart, width = 30, height = 30 }){
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid="not-in-cart"
+      onClick={handleClick}
     >
       <g id="not-in-cart">
         <path
