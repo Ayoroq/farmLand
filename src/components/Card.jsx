@@ -19,7 +19,11 @@ export default function ShopCard(props) {
   };
 
   return (
-    <div className={styles.ShopCard} onClick={() => navigate(`/shop/${props.slug}`)} data-testid="shopCard">
+    <div
+      className={styles.ShopCard}
+      onClick={() => navigate(`/shop/${props.slug}`)}
+      data-testid="shopCard"
+    >
       <div className={styles.ShopCardImgContainer}>
         <ImageWithLoading
           src={props.image}
@@ -34,15 +38,19 @@ export default function ShopCard(props) {
             ${props.price} / <span>{props.unit}</span>
           </p>
         </div>
-        <button onClick={toggleBasket} className={styles.ShopCardButton} role="toggleBasket">
+        <button
+          onClick={toggleBasket}
+          className={styles.ShopCardButton}
+          role="toggleBasket"
+        >
           {basket.basket.some((item) => item.id === props.id) ? (
-            <svg 
+            <svg
               width="25"
               height="25"
               viewBox="0 0 48 48"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              data-testid = 'in-cart'
+              data-testid="in-cart"
             >
               <g id="in-cart">
                 <path
@@ -107,17 +115,6 @@ function CartCard(props) {
               ${props.price} / <span>{props.unit}</span>
             </p>
             <div className={styles.CartCardQuantity}>
-              <p className={styles.CartCardQuantityLabel}>
-                <input
-                  type="text"
-                  readOnly
-                  min={0}
-                  className={styles.quantityInput}
-                  value={props.quantity}
-                  size={(props.quantity).toString().length}
-                />
-                <span className={styles.QuantityUnit}>{props.unit}</span>
-              </p>
               <div className={styles.CartCardQuantityButtons}>
                 <button
                   onClick={decreaseQuantity}
@@ -140,6 +137,17 @@ function CartCard(props) {
                     </g>
                   </svg>
                 </button>
+                <p className={styles.CartCardQuantityLabel}>
+                  <input
+                    type="text"
+                    readOnly
+                    min={0}
+                    className={styles.quantityInput}
+                    value={props.quantity}
+                    size={props.quantity.toString().length}
+                  />
+                  <span className={styles.QuantityUnit}>{props.unit}</span>
+                </p>
                 <button
                   onClick={increaseQuantity}
                   aria-label="increaseQuantity"
