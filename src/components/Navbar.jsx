@@ -103,25 +103,24 @@ const Navbar = forwardRef((props, ref) => {
                   strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
-                  {" "}
                   <path
                     d="M20 7L4 7"
                     stroke="currentColor"
                     strokeWidth="1.5"
                     strokeLinecap="round"
-                  ></path>{" "}
+                  ></path>
                   <path
                     d="M20 12L4 12"
                     stroke="currentColor"
                     strokeWidth="1.5"
                     strokeLinecap="round"
-                  ></path>{" "}
+                  ></path>
                   <path
                     d="M20 17L4 17"
                     stroke="currentColor"
                     strokeWidth="1.5"
                     strokeLinecap="round"
-                  ></path>{" "}
+                  ></path>
                 </g>
               </svg>
             </button>
