@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import style from "./App.module.css";
@@ -10,6 +10,7 @@ import { useEffect, useRef } from "react";
 
 export default function App() {
   const lenisRef = useRef();
+  const location = useLocation();
 
   useEffect(() => {
     function update(time) {
@@ -20,6 +21,11 @@ export default function App() {
 
     return () => gsap.ticker.remove(update);
   }, []);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
