@@ -7,6 +7,7 @@ import { BasketContext } from "../../context/BasketContext";
 import NotFound from "../NotFound/NotFound";
 import ImageWithLoading from "../../components/ImageWithLoading";
 import SEO from "../../components/SEO";
+import { MAX_QTY } from "../../context/BasketContext";
 
 const ProductDetail = () => {
   const basket = useContext(BasketContext);
@@ -27,12 +28,14 @@ const ProductDetail = () => {
   const currentPrice = product.price * currentQuantity;
 
   function incrementQuantity() {
-    if (basketItem) {
+  if (basketItem) {
+    if (basketItem.quantity < MAX_QTY) {
       basket.changeQuantity(product, basketItem.quantity + 1);
-    } else {
-      setLocalQuantity((prev) => prev + 1);
     }
+  } else if (localQuantity < MAX_QTY) {
+    setLocalQuantity(prev => prev + 1);
   }
+}
 
   function decrementQuantity() {
     if (basketItem) {

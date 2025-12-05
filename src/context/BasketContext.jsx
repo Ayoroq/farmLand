@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
 export const BasketContext = createContext(null);
+export const MAX_QTY = 99;
 
 export default function BasketProvider({ children }) {
   // get the items in the basket if they already exists

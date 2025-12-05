@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { BasketContext } from "../context/BasketContext";
 import ImageWithLoading from "./ImageWithLoading";
 import BasketIcon from "./BasketIcon";
+import { MAX_QTY } from "../context/BasketContext";
 
 export default function ShopCard(props) {
   const basket = useContext(BasketContext);
@@ -55,7 +56,9 @@ function CartCard(props) {
   const basket = useContext(BasketContext);
 
   function increaseQuantity() {
-    basket.changeQuantity(props, props.quantity + 1);
+    if (props.quantity >= 1 && props.quantity < MAX_QTY) {
+      basket.changeQuantity(props, props.quantity + 1);
+    }
   }
 
   function decreaseQuantity() {
