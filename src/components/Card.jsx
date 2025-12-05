@@ -109,11 +109,12 @@ function CartCard(props) {
             <div className={styles.CartCardQuantity}>
               <p className={styles.CartCardQuantityLabel}>
                 <input
-                  type="number"
+                  type="text"
                   readOnly
                   min={0}
                   className={styles.quantityInput}
                   value={props.quantity}
+                  size={(props.quantity).toString().length}
                 />
                 <span className={styles.QuantityUnit}>{props.unit}</span>
               </p>
