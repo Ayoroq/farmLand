@@ -73,6 +73,10 @@
     padding 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
 
+.filterSortDropdownIcon{
+  color: black;
+}
+
 .sort {
   display: flex;
   flex-direction: column;
