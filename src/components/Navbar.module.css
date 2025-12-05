@@ -7,6 +7,17 @@
   --font-family: "Agbalumo", system-ui, sans-serif;
 }
 
+/* Ensure fonts have fallbacks */
+@font-face {
+  font-family: 'Agbalumo';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-display: swap;
+}
+
 .navbar {
   display: flex;
   padding: 2rem;
