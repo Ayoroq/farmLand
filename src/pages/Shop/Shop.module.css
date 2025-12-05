@@ -57,6 +57,7 @@
 
 .filterAndSort {
   display: flex;
+  z-index: 999;
   position: absolute;
   flex-direction: column;
   top: 150%;
