@@ -2,6 +2,7 @@ import styles from "./Shop.module.css";
 import { useState, useRef, useEffect } from "react";
 import ShopCard from "../../components/Card";
 import { products } from "../../data/products";
+import SEO from "../../components/SEO";
 
 export default function Shop() {
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -103,7 +104,13 @@ export default function Shop() {
   }
 
   return (
-    <main className={styles.shop}>
+    <>
+      <SEO 
+        title="Shop Organic Produce - FarmLand"
+        description="Browse our selection of fresh organic fruits, vegetables, and produce. Filter by category, search products, and add to cart."
+        keywords="organic produce, fresh fruits, vegetables, shop organic, healthy food"
+      />
+      <main className={styles.shop}>
       <header className={styles.shopHeader}>
         <div className={styles.headerleft}>
           <h1>Produce</h1>
@@ -405,6 +412,7 @@ export default function Shop() {
           <ShopCard key={product.id} {...product} />
         ))}
       </section>
-    </main>
+      </main>
+    </>
   );
 }

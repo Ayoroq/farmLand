@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { BasketContext } from "../../context/BasketContext";
 import NotFound from "../NotFound/NotFound";
 import ImageWithLoading from "../../components/ImageWithLoading";
+import SEO from "../../components/SEO";
 
 const ProductDetail = () => {
   const basket = useContext(BasketContext);
@@ -63,7 +64,13 @@ const ProductDetail = () => {
   }
 
   return (
-    <main className={styles.productDetailMain}>
+    <>
+      <SEO 
+        title={`${product.name} - Fresh Organic Produce | FarmLand`}
+        description={`${product.details} Buy fresh organic ${product.name.toLowerCase()} for $${product.price}/${product.unit}. Add to cart and enjoy premium quality produce.`}
+        keywords={`${product.name.toLowerCase()}, organic ${product.category}, fresh produce, ${product.name} price`}
+      />
+      <main className={styles.productDetailMain}>
       <div className={styles.backContaine}>
         <Link to="/shop">
           <svg
@@ -165,7 +172,8 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 };
 

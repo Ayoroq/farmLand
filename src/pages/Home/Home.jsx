@@ -7,6 +7,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import SEO from "../../components/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,12 @@ export default function Home() {
   const homeRef = useRef(null);
 
   return (
+    <>
+      <SEO 
+        title="FarmLand - Fresh Organic Produce Delivered"
+        description="We're farmers, purveyors, and eaters of organically grown food. Shop fresh organic fruits, vegetables, and produce from Central California farms."
+        keywords="organic farm, fresh produce, organic vegetables, organic fruits, farm to table, California organic"
+      />
       <div className={styles.home}>
         <section className={`${styles.hero} ${styles.section}`}>
           <main className={styles.main}>
@@ -85,5 +92,6 @@ export default function Home() {
           </section>
         </section>
       </div>
+    </>
   );
 }
