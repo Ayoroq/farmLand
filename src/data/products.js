@@ -96,7 +96,7 @@ export const products = [
     description: "Sweet organic strawberries, perfect for desserts",
     details: "Juicy organic strawberries bursting with natural sweetness and vitamin C. Perfect for desserts, smoothies, or eating fresh. Hand-picked at peak ripeness and free from harmful pesticides.",
     inStock: true,
-    unit: "500g",
+    unit: "kg",
   },
   {
     id: 9,
@@ -108,7 +108,7 @@ export const products = [
     description: "Antioxidant-rich organic blueberries",
     details: "Premium organic blueberries packed with antioxidants and natural sweetness. Excellent for brain health and immune support. Perfect for baking, smoothies, or snacking. Carefully harvested and sorted for quality.",
     inStock: true,
-    unit: "500g",
+    unit: "kg",
   },
   {
     id: 10,
@@ -194,7 +194,7 @@ export const products = [
     description: "Sweet tropical organic pineapples, rich in vitamin C",
     details: "Sweet tropical organic pineapples loaded with vitamin C, bromelain, and natural enzymes. Perfect for fresh eating, smoothies, or grilling. Ripened naturally for optimal sweetness and juiciness.",
     inStock: true,
-    unit: "each",
+    unit: "kg",
   },
 
   {
@@ -342,7 +342,7 @@ export const products = [
     description: "Premium organic cashew nuts, rich in healthy fats",
     details: "Premium organic cashew nuts with creamy texture and mild, buttery flavor. Rich in healthy fats, protein, and minerals like magnesium and zinc. Perfect for snacking, baking, or making cashew cream.",
     inStock: true,
-    unit: "500g",
+    unit: "kg",
   },
   {
     id: 29,
