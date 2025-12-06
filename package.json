@@ -1,14 +1,46 @@
 {
   "name": "farmland",
+  "version": "1.0.0",
+  "description": "A modern, responsive e-commerce application for organic produce built with React 19 and modern web technologies.",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "keywords": [
+    "react",
+    "ecommerce",
+    "organic",
+    "produce",
+    "shopping-cart",
+    "vite",
+    "responsive",
+    "modern-web"
+  ],
+  "author": {
+    "name": "Ayoroq",
+    "url": "https://github.com/ayoroq"
+  },
+  "license": "MIT",
+  "homepage": "https://farmland-produce.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayoroq/farmland.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ayoroq/farmland/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext js,jsx --fix",
     "test": "vitest",
-    "preview": "vite preview"
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "preview": "vite preview",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
