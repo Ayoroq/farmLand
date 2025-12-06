@@ -10,11 +10,7 @@
 /* Ensure fonts have fallbacks */
 @font-face {
   font-family: 'Agbalumo';
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Newsreader';
+  src: url('/fonts/agbalumo.woff2') format('woff2');
   font-display: swap;
 }
 
