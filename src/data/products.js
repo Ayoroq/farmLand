@@ -5,7 +5,7 @@ export const products = [
     name: "Tomatoes",
     slug: "tomatoes",
     price: 4.99,
-    category: "vegetables",
+    category: "fruits",
     image: "/images/tomatoes.jpg",
     description: "Fresh organic tomatoes grown locally",
     details: "Our vine-ripened organic tomatoes are grown without pesticides in nutrient-rich soil. Perfect for salads, cooking, or eating fresh. High in lycopene and vitamin C. Harvested at peak ripeness for maximum flavor.",
