@@ -173,6 +173,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Aerial farmland video from stock footage sources and [Pexels](https://www.pexels.com/)
 
 ### Development Resources
+- Design based on [Figma Basics Community File](https://www.figma.com/community/file/1407443818947305406)
 - Icons from [GoogleFonts](https://fonts.google.com/)
 - Font from [Google-Webfonts-Helper](https://gwfh.mranftl.com/fonts/agbalumo?subsets=latin)
 - Inspiration from modern e-commerce platforms

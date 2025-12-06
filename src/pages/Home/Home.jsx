@@ -1,7 +1,7 @@
 import styles from "./Home.module.css";
 import { Link, useNavigate } from "react-router";
 import vegImage from "../../assets/HomeAssets/vegetables.png";
-import multiVegImage from "../../assets/HomeAssets/multiple-veg.png";
+import multiVegImage from "/images/multiple-veg.png";
 import ArialViewVideo from "../../assets/HomeAssets/Aerial View of Farmland.mp4";
 import { useRef } from "react";
 import gsap from "gsap";
