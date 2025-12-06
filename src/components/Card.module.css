@@ -23,9 +23,9 @@
   display: flex;
   background-color: #fafaf5;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   border-radius: 0 0 10px 10px;
-  gap: 1rem;
+  gap: 0.45rem;
 }
 
 .ShopCardButton {
@@ -34,10 +34,24 @@
   cursor: pointer;
   transition: transform 0.3s ease;
   align-self: flex-end;
+  padding: 0;
+  flex-shrink: 0;
+  min-width: 20px;
+  min-height: 20px;
+  display: flex;
 }
 
 .ShopCardButton:hover {
   transform: scale(1.2);
+}
+
+.ShopCardName{
+  font-size: 0.85rem;
+  font-weight: bold
+}
+
+.ShopCardPrice{
+  font-size: 0.85rem;
 }
 
 /* Cart Card */

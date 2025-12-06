@@ -35,8 +35,8 @@ export default function ShopCard(props) {
       </div>
       <div className={styles.ShopCardDetailsContainer}>
         <div className={styles.ShopCardDetails}>
-          <h3>{props.name}</h3>
-          <p>
+          <p className={styles.ShopCardName}>{props.name}</p>
+          <p className={styles.ShopCardPrice}>
             ${props.price} / <span>{props.unit}</span>
           </p>
         </div>
