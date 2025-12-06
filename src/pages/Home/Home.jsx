@@ -1,5 +1,5 @@
 import styles from "./Home.module.css";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import vegImage from "../../assets/HomeAssets/vegetables.png";
 import multiVegImage from "../../assets/HomeAssets/multiple-veg.png";
 import ArialViewVideo from "../../assets/HomeAssets/Aerial View of Farmland.mp4";
@@ -14,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
   const sectionRef = useRef([]);
   const homeRef = useRef(null);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -29,9 +30,9 @@ export default function Home() {
               We’re <em>farmers</em>,<em> purveyors</em>, and <em>eaters</em>
               <br></br>of organically grown food.
             </h1>
-            <Link className={styles.shopButton} to="/shop">
+            <button onClick={() => navigate('/shop')} className={styles.shopButton}>
               Browse Our Shop
-            </Link>
+            </button>
           </main>
           <section className={styles.subSection}>
             <figure>
