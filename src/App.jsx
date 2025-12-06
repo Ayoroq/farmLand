@@ -7,7 +7,7 @@ import BasketProvider from "./context/BasketContext.jsx";
 import { gsap } from "gsap";
 import { ReactLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
   const lenisRef = useRef();
