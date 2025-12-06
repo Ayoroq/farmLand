@@ -7,6 +7,7 @@ import BasketProvider from "./context/BasketContext.jsx";
 import { gsap } from "gsap";
 import { ReactLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function App() {
   const lenisRef = useRef();
@@ -34,6 +35,7 @@ export default function App() {
           <Navbar />
           <Outlet />
           <Footer />
+          <Analytics />
         </BasketProvider>
       </div>
     </ReactLenis>
