@@ -1,12 +1,14 @@
-# 🌱 FarmLand - Organic Produce E-commerce
+#  FarmLand - Organic Produce E-commerce
 
 A modern, responsive e-commerce application for organic produce built with React 19 and modern web technologies.
 
-![FarmLand Preview](https://via.placeholder.com/800x400/27ae60/ffffff?text=FarmLand+E-commerce)
+![FarmLand Preview](/public/FarmLand.jpeg)
+![Shop Page](/public/Shop.jpeg)
+![Basket Page](/public/Basket.jpeg)
 
 ##  Features
 
-### 🛒 Shopping Experience
+### Shopping Experience
 - **Product Catalog** - Browse 29+ organic products (fruits, vegetables, organic items)
 - **Smart Search** - Real-time product search with instant results
 - **Advanced Filtering** - Filter by category (fruits, vegetables, organic)
@@ -29,7 +31,7 @@ A modern, responsive e-commerce application for organic produce built with React
 
 ##  Live Demo
 
-[View Live Demo](https://your-demo-url.com) | [View Source Code](https://github.com/ayoroq/farmland)
+[View Live Demo](https://farmland-produce.vercel.app/) | [View Source Code](https://github.com/ayoroq/farmland)
 
 ## Tech Stack
 
@@ -163,8 +165,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments and Sources
 
+### Image & Video Sources
 - Product images from [Unsplash](https://unsplash.com)
-- Icons from [Heroicons](https://heroicons.com)
+- Additional images from [Freepik](https://www.freepik.com/photos)
+- Spinach images from [Lettuce Info](https://lettuceinfo.org/products/spinach/)
+- Kale images from [Buy BC](https://buybc.gov.bc.ca/app/uploads/sites/386/2024/03/Kale_352895761.png) and [Lettuce Info](https://lettuceinfo.org/products/kale/)
+- Aerial farmland video from stock footage sources and [Pexels](https://www.pexels.com/)
+
+### Development Resources
+- Icons from [GoogleFonts](https://fonts.google.com/)
+- Font from [Google-Webfonts-Helper](https://gwfh.mranftl.com/fonts/agbalumo?subsets=latin)
 - Inspiration from modern e-commerce platforms
 - The Odin Project for the learning journey
 
