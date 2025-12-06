@@ -22,7 +22,7 @@ A modern, responsive e-commerce application for organic produce built with React
 - **Error Handling** - Comprehensive error boundaries and 404 pages
 - **Loading States** - Professional loading indicators and shimmer effects
 
-### 🏗️ Technical Features
+### Technical Features
 - **Modern React** - Built with React 19 and latest features
 - **Type Safety** - ESLint configuration for code quality
 - **Testing** - Comprehensive test suite with Vitest and Testing Library
@@ -93,7 +93,7 @@ npm run preview
 npm run lint
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 farmland/
@@ -145,7 +145,7 @@ farmland/
 - [ ] **Backend Integration** - API integration for dynamic data
 - [ ] **PWA Features** - Offline support and app-like experience
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
